@@ -8,12 +8,12 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class ProducttypeService {
-  private urlEndPoint:string = 'http://localhost:8080/v1/producttype/1';
+  private urlEndPoint:string = 'http://localhost:8080/v1/company/1';
   constructor(private http: HttpClient) { }
 
 getProducttype(): Observable<Producttype[]>{
     // @ts-ignore
-  return this.http.get(this.urlEndPoint.pipe(map(response) => response as Producttype[])
-  )
+  return this.http.get(this.urlEndPoint).pipe( map(response => response as Producttype[])
+  );
   }
 }

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Producttype} from "./producttype";
+import {ProducttypeService} from "./producttype.service";
 
 @Component({
   selector: 'app-producttype',
@@ -18,10 +19,12 @@ export class ProducttypeComponent implements OnInit {
     {producttypeId:1,typeName:"MB"}
   ];
 
+constructor(private producttypeService: ProducttypeService) {
+}
 
 
-
-  ngOnInit(): void {
+  ngOnInit(){
+    this.producttypeService.getProducttype().subscribe(producttype => this.producttype = producttype);
   }
 
 }
