@@ -13,18 +13,13 @@ import {Producttype} from "./producttype";
 @Injectable()
 export class ProducttypeComponent implements OnInit {
 
-  private urlEndPoint:string = 'http://localhost:8080/v1/producttype/1';
 
   producttype: Producttype [] = [
     {producttypeId:1,typeName:"MB"}
   ];
 
-  constructor(private http: HttpClient) { }
 
-  // getProducttype(): Observable<Producttype[]>{
-  //   return this.http.get(this.urlEndPoint.pipe(map(response) => response as Producttype[])
-  // );
- // }
+
 
   ngOnInit(): void {
   }
