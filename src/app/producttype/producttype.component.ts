@@ -15,16 +15,22 @@ import {ProducttypeService} from "./producttype.service";
 export class ProducttypeComponent implements OnInit {
 
 
-  producttype: Producttype [] = [
-    {producttypeId:1,typeName:"MB"}
-  ];
+ producttype: Producttype[] = [];
+
+  // producttype: Producttype [] = [
+  //   {productTypeId:1,typeName:"MB"}
+  // ];
 
 constructor(private producttypeService: ProducttypeService) {
 }
 
 
   ngOnInit(){
-    this.producttypeService.getProducttype().subscribe(producttype => this.producttype = producttype);
+    this.producttypeService.getProducttype()
+      .subscribe(producttype =>
+      {this.producttype = producttype;
+      });
+
   }
 
 }
