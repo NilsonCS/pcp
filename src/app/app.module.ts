@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { ProducttypeComponent } from './producttype/producttype.component';
 import {RouterModule,Routes} from "@angular/router";
+import { ListarComponent } from './Company/listar/listar.component';
+import { AddComponent } from './Company/add/add.component';
+import { EditComponent } from './Company/edit/edit.component';
 
 
 const routes: Routes = [
@@ -20,7 +23,10 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProducttypeComponent
+    ProducttypeComponent,
+    ListarComponent,
+    AddComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
