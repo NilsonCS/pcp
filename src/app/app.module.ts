@@ -16,6 +16,13 @@ const routes: Routes = [
   {path: '', redirectTo: '/header', pathMatch: 'full'},
   {path: 'header', component: HeaderComponent},
   {path: 'producttype', component: ProducttypeComponent},
+  
+  {path: 'listar', component: ListarComponent},
+  {path: 'add', component: AddComponent},
+  {path: 'edit', component: EditComponent},
+
+
+
 ];
 
 

@@ -1,1 +1,45 @@
 <p>listar works!</p>
+
+<div class="container">
+    <button (click)="Listar()"  class="btn btn-info"> Lista </button>
+    <button (click)="Nuevo()" class="btn btn-info"  style="margin-left: 10px; "> Agregar </button>
+</div>
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Empresas</h3>     
+        </div>
+
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empresa of empresas" class="text-center">
+                        <td>{{empresa.Id}}</td>
+                        <td>{{empresa.Nombre}}</td>
+                        <td>{{empresa.Direccion}}</td>
+                        <td>{{empresa.Telefono}}</td>
+                        <td>
+                            <button class="btn btn-warning"> Editar</button>
+                            <button class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table> 
+
+        </div>    
+
+    </div>
+</div>
