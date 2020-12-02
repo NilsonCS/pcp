@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Company } from '../model/Company';
+import { ServiceService } from '../ServiceCompany/service.service';
 
 @Component({
   selector: 'app-listar',
@@ -9,9 +11,15 @@ import { Router } from '@angular/router';
 export class ListarComponent implements OnInit {
   title = "Ejemplo";
 
-  constructor(private router:Router) { }
+  companies: Company[];
+  constructor(private service:ServiceService ,private router:Router) { }
 
   ngOnInit(): void {
+    this.service.getCompany()
+    .subscribe(data =>{
+      this.companies=data;
+    })  
+
   }
 
   Listar(){
@@ -21,5 +29,8 @@ export class ListarComponent implements OnInit {
   Nuevo(){
     this.router.navigate(["add"]);
   }
+
+
+
 
 }

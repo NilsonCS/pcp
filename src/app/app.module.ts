@@ -11,6 +11,10 @@ import { ListarComponent } from './Company/listar/listar.component';
 import { AddComponent } from './Company/add/add.component';
 import { EditComponent } from './Company/edit/edit.component';
 
+import { FormsModule } from '@angular/forms';
+import { ServiceService } from '../app/Company/ServiceCompany/service.service';
+
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/header', pathMatch: 'full'},
@@ -39,7 +43,8 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
