@@ -10,6 +10,8 @@ import {RouterModule,Routes} from "@angular/router";
 import { ListarComponent } from './Company/listar/listar.component';
 import { AddComponent } from './Company/add/add.component';
 import { EditComponent } from './Company/edit/edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 import { FormsModule } from '@angular/forms';
 import { ServiceService } from '../app/Company/ServiceCompany/service.service';
@@ -44,7 +46,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     AppRoutingModule,
-    
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
