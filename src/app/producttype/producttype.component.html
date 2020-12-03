@@ -12,6 +12,9 @@
        <tr *ngFor="let producttype of producttypes">
          <td>{{ producttype.productTypeId}}</td>
          <td align="center">{{ producttype.typeName}}</td>
+         <td>
+           <button type="button" name="editar" [routerLink]="['/producttype/form', producttype.productTypeId]" class="btn btn-primary btn-sm">editar</button>
+         </td>
        </tr>
 
 
