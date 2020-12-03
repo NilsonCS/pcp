@@ -5,15 +5,22 @@
  <table class="jasmine-alert">
    <thead>
    <tr>
-     <th>id</th>
-     <th>type</th>
-   </tr>
+     <th>Id  &nbsp;&nbsp;&nbsp;&nbsp; Nombre del tipo</th>
+
+
    </thead>
    <tbody>
-   <tr *ngFor="let producttype of producttype">
-     <td>{{ producttype.productTypeId}}</td>
-     <td>{{ producttype.typeName}}</td>
-   </tr>
+   <div>
+
+       <tr *ngFor="let producttype of producttypes">
+         <td>{{ producttype.productTypeId}}  </td> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+
+         <td align="center">{{ producttype.typeName}}</td>
+       </tr>
+
+
+   </div>
+
    </tbody>
  </table>
 

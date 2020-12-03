@@ -1,7 +1,7 @@
 export class Producttype {
 
-  constructor(producttypeId: number, typeName: string) {
-    this.productTypeId = producttypeId;
+  constructor(productTypeId: number, typeName: string) {
+    this.productTypeId = productTypeId;
     this.typeName = typeName;
   }
 
