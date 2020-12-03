@@ -18,6 +18,7 @@ import { ServiceService } from '../app/Company/ServiceCompany/service.service';
 import { StoreComponent } from './store/store.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -27,9 +28,7 @@ const routes: Routes = [
   {path: 'listar', component: ListarComponent},
   {path: 'add', component: AddComponent},
   {path: 'edit', component: EditComponent},
-
-
-
+  {path: 'cart', component: CartComponent}
 ];
 
 
@@ -42,7 +41,8 @@ const routes: Routes = [
     AddComponent,
     EditComponent,
     StoreComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent
 
   ],
   imports: [
