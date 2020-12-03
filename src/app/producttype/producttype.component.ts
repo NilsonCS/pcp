@@ -11,25 +11,27 @@ import {ProducttypeService} from "./producttype.service";
   styleUrls: ['./producttype.component.css']
 })
 
-@Injectable()
+// @Injectable()
 export class ProducttypeComponent implements OnInit {
 
 
- producttype: Producttype[] = [];
+ //producttype: Producttype[] = [];
+
+ producttypes: any;
 
   // producttype: Producttype [] = [
   //   {productTypeId:1,typeName:"MB"}
   // ];
 
-constructor(private producttypeService: ProducttypeService) {
+constructor(private producttypeService: ProducttypeService ) {
 }
 
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.producttypeService.getProducttype()
-      .subscribe(producttype =>
-      {this.producttype = producttype;
-      });
+      .subscribe(data =>
+      {this.producttypes = data;
+      })
 
   }
 
