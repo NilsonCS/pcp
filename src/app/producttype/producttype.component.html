@@ -2,28 +2,30 @@
   <div class="card-header">Tipodeproductos</div>
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de tipo de productos</h5>
- <table class="jasmine-alert">
+ <table class="table table-sm table-bordered table-striped">
    <thead>
    <tr>
-     <th>Id  &nbsp;&nbsp;&nbsp;&nbsp; Nombre del tipo</th>
-
+     <th>ID</th><th> Type name <th>
 
    </thead>
-   <tbody>
-   <div>
 
        <tr *ngFor="let producttype of producttypes">
-         <td>{{ producttype.productTypeId}}  </td> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-
+         <td>{{ producttype.productTypeId}}</td>
          <td align="center">{{ producttype.typeName}}</td>
        </tr>
 
 
-   </div>
 
-   </tbody>
+
+
  </table>
 
 
   </div>
+</div>
+
+<div>
+  <button routerLink="/producttype/form">
+    Crear nuevo tipo de producto
+  </button>
 </div>
