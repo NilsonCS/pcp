@@ -11,7 +11,8 @@ import { ServiceService } from '../ServiceCompany/service.service';
 export class ListarComponent implements OnInit {
   title = "Ejemplo";
 
-  companies: Company[];
+  //companies: Company[];
+  companies: Company[] = [];
   constructor(private service:ServiceService ,private router:Router) { }
 
   ngOnInit(): void {
@@ -19,8 +20,15 @@ export class ListarComponent implements OnInit {
     .subscribe(data =>{
       this.companies=data;
     })  
-
+  }  
+ /** ngOnInit(): void {
+    this.service.getCompany()
+    .subscribe(companies =>{
+      this.companies = companies;
+    })  
   }
+*/
+
 
   Listar(){
     this.router.navigate(["listar"]);
