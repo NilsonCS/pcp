@@ -28,3 +28,9 @@
 .icon {
   cursor: pointer;
 }
+.button2 {
+  padding: 0% 40% ;
+  font-size: large;
+  font-weight: bold;
+  width: 20%; 
+}

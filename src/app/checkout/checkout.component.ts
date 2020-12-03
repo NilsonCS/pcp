@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Observable } from "rxjs";
 import { CartService } from '../cart/cart.service';
 import { MatDialog } from '@angular/material/dialog';
+import { CheckoutService } from './checkout.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -12,9 +13,9 @@ export class CheckoutComponent implements OnInit {
 public formGroup: any;
 titleAlert: string = "This field is required";
 post: any = "";
-@Input() total: number = 0;
+total: number = 0;
 
-constructor(private formBuilder: FormBuilder, public cartService: CartService, private dialog: MatDialog) {}
+constructor(private formBuilder: FormBuilder, public cartService: CartService, private dialog: MatDialog, private checkoutService: CheckoutService) {}
 
 ngOnInit() {
   this.createForm();
@@ -99,7 +100,8 @@ getErrorPassword() {
 }
 
 onSubmit(post: any) {
-  this.post = post;
+  this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1, "total":this.total, "contact":post.email, "details":post.description}).subscribe(data => {this.post = "Guardado con exito!!!";});
+  
 }
 close(){
   this.dialog.closeAll();
