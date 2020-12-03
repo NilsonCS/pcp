@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServiceService } from '../serviceCity/service.service';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  cities: any;
+  constructor(private service: ServiceService, private router: Router) {
+  }
+  ngOnInit() {
+    this.service.getCity().subscribe(data => {
+      this.cities = data;
+    });
   }
 
+  /*cities: any;
+  constructor(private service:ServiceService, private router:Router) { }
+
+  ngOnInit(): void {
+    this.service.getCity().subscribe(data =>{
+      this.cities=data;
+    })
+  }
+*/
+  ListCities(){
+    this.router.navigate(["list"]);
+  }
+
+  NewCities(){
+    //this.router.navigate(["add"]);
+  }
 }
+
