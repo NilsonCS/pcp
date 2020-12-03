@@ -31,7 +31,8 @@ const routes: Routes = [
   {path: 'listar', component: ListarComponent},
   {path: 'add', component: AddComponent},
   {path: 'edit', component: EditComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
+  {path: 'list', component: ListComponent}
 ];
 
 
