@@ -7,7 +7,7 @@ import { City } from '../model/city';
   providedIn: 'root'
 })
 export class ServiceService {
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   Url:string = 'http://localhost:8080/v1/city/';
   getCity(){
