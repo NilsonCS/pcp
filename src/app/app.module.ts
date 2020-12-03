@@ -19,8 +19,7 @@ import { ServiceService } from '../app/Company/ServiceCompany/service.service';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/header', pathMatch: 'full'},
-  {path: 'header', component: HeaderComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'producttype', component: ProducttypeComponent},
   
   {path: 'listar', component: ListarComponent},

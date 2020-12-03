@@ -12,13 +12,13 @@ export class ListarComponent implements OnInit {
   title = "Ejemplo";
 
   //companies: Company[];
-  companies: Company[] = [];
+  company: any;
   constructor(private service:ServiceService ,private router:Router) { }
 
   ngOnInit(): void {
     this.service.getCompany()
     .subscribe(data =>{
-      this.companies=data;
+      this.company=data;
     })  
   }  
  /** ngOnInit(): void {
