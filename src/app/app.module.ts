@@ -19,6 +19,7 @@ import { StoreComponent } from './store/store.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
+import { ListComponent } from './city/list/list.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
     EditComponent,
     StoreComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    ListComponent
 
   ],
   imports: [
