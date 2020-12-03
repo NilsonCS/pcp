@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Producttype} from './producttype';
 import {ProducttypeService} from './producttype.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -26,6 +28,8 @@ export class FormComponent implements OnInit {
       .subscribe(
         producttype => {
           this.router.navigate(['/producttype']);
+          Swal.fire('Nuevo tipo de producto', `El tipo de producto  ${producttype.typeName} ha sido creado con éxito`, 'success');
+
         });
   }
 }
