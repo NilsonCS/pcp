@@ -14,5 +14,10 @@ export class ServiceService {
   return this.http.get<Company[]>(this.Url);
   }
 
+  //CreateCompany
+ // createCompany(company:Company){
+ //   return this.http.post<Company>(this.Url,company);
+  //}
+
 
 }
