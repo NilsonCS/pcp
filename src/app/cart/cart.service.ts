@@ -4,16 +4,25 @@ import { Product } from '../product/product'
   providedIn: 'root'
 })
 export class CartService {
-  product: Product[] = [];
+  products: Product[] = [];
+  total: number = 0;
   constructor() { }
 
   addProduct(product: Product){
-    this.product.push(product);
+    this.products.push(product);
   }
   clear(){
-    this.product = [];
+    this.products = [];
   }
   getProducts():Product[]{
-    return this.product;
+    return this.products;
+  }
+  getTotal():number{
+    this.total = 0;
+    for (let product of this.products){
+      this.total+=product.unitPrice;
+      console.log(product.unitPrice);
+    }
+    return this.total;
   }
 }
