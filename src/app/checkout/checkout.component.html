@@ -28,7 +28,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-element">
-      <input matInput placeholder="Contraseña" formControlName="password">
+      <input matInput placeholder="Contraseña" formControlName="password" type="password">
       <mat-hint>Las contraseñas deben tener al menos 8 caracteres, una mayuscula y un numero </mat-hint>
       <mat-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
         {{ getErrorPassword() }}
@@ -39,9 +39,9 @@
       <input matInput placeholder="Total" formControlName="total" [value]="total | currency" [readonly]="true">
     </mat-form-field>
 
-    <div class="form-element">
+    <!--<div class="form-element">
       <mat-checkbox formControlName="validate" value="1">Solo reserva</mat-checkbox>
-    </div>
+    </div>-->
 
     <div class="form-element">
       <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Comprar</button>
@@ -54,4 +54,5 @@
   <div class="container">
     {{ post | json }}
   </div>
+  
 </ng-template>
