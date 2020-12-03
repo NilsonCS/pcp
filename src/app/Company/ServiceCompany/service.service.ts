@@ -15,9 +15,12 @@ export class ServiceService {
   }
 
   //CreateCompany
- // createCompany(company:Company){
- //   return this.http.post<Company>(this.Url,company);
-  //c}
+  createCompany(company:Company):Observable<any>{
+    return this.http.post<Company>(this.Url,company);
+
+  }
+
+
 
 
 }
