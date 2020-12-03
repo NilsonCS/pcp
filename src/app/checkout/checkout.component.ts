@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Observable } from "rxjs";
 import { CartService } from '../cart/cart.service';
-
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -14,7 +14,7 @@ titleAlert: string = "This field is required";
 post: any = "";
 @Input() total: number = 0;
 
-constructor(private formBuilder: FormBuilder, public cartService: CartService) {}
+constructor(private formBuilder: FormBuilder, public cartService: CartService, private dialog: MatDialog) {}
 
 ngOnInit() {
   this.createForm();
@@ -101,5 +101,7 @@ getErrorPassword() {
 onSubmit(post: any) {
   this.post = post;
 }
-
+close(){
+  this.dialog.closeAll();
+}
 }

@@ -25,3 +25,6 @@
   font-weight: bold;
   width: 100%;
 }
+.icon {
+  cursor: pointer;
+}
