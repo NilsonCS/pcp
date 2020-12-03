@@ -17,7 +17,7 @@ export class ServiceService {
   //CreateCompany
  // createCompany(company:Company){
  //   return this.http.post<Company>(this.Url,company);
-  //}
+  //c}
 
 
 }
