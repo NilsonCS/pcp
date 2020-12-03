@@ -15,13 +15,14 @@ import { MaterialModule } from './material/material.module';
 
 import { FormsModule } from '@angular/forms';
 import { ServiceService } from '../app/Company/ServiceCompany/service.service';
-
+import { StoreComponent } from './store/store.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/store', pathMatch: 'full'},
   {path: 'producttype', component: ProducttypeComponent},
-  
+  {path: 'store', component: StoreComponent},
   {path: 'listar', component: ListarComponent},
   {path: 'add', component: AddComponent},
   {path: 'edit', component: EditComponent},
@@ -38,7 +39,9 @@ const routes: Routes = [
     ProducttypeComponent,
     ListarComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
+    StoreComponent
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ const routes: Routes = [
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
