@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Producttype} from "./producttype";
 import {catchError, map} from 'rxjs/operators';
+import swal from "sweetalert2";
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import {catchError, map} from 'rxjs/operators';
 export class ProducttypeService {
    urlEndPoint:string = 'http://localhost:8080/v1/producttype/';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 // getProducttype(): Observable<Producttype[]>{
 //     // @ts-ignore
@@ -26,7 +28,7 @@ getProducttype(){
       map((response: any) => response.producttype as Producttype),
       catchError(e => {
 
-        if (e.status == 400) {
+        if (e.status === 400) {
           return throwError(e);
         }
 
@@ -35,4 +37,16 @@ getProducttype(){
       })
     );
   }
+
+  getProductTypee(productTypeId: any): Observable<Producttype>{
+    return this.http.get<Producttype>(`${this.urlEndPoint}/${productTypeId}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/producttype']);
+        console.error(e.error.mensaje);
+        swal.fire('Error al editar', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
 }

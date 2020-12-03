@@ -16,10 +16,11 @@ export class FormComponent implements OnInit {
 
   constructor(private productTypeService: ProducttypeService,
               private router: Router,
-              private activetedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
+    this.cargarProducttype();
+      }
 
 
   public create(): void{
@@ -31,6 +32,15 @@ export class FormComponent implements OnInit {
           Swal.fire('Nuevo tipo de producto', `El tipo de producto  ${producttype.typeName} ha sido creado con éxito`, 'success');
 
         });
+  }
+
+  cargarProducttype(): void {
+    this.activatedRoute.params.subscribe(params => {
+      let productTypeId = params ['productTypeId'];
+      if (productTypeId) {
+        this.productTypeService.getProductTypee(productTypeId).subscribe((productType) => this.producttype = productType);
+      }
+    });
   }
 }
 
