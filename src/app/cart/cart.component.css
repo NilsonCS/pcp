@@ -7,3 +7,13 @@ table {
 .mat-elevation-z8 {
     font-size: xx-large;
 }
+button.check{
+    height: 70%;
+    background-color: orangered;
+}
+button.check:hover{
+    background-color: green;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}

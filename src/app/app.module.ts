@@ -13,13 +13,15 @@ import { EditComponent } from './Company/edit/edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceService } from '../app/Company/ServiceCompany/service.service';
 import { StoreComponent } from './store/store.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { ListComponent } from './city/list/list.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 
 
 const routes: Routes = [
@@ -44,7 +46,8 @@ const routes: Routes = [
     StoreComponent,
     ProductComponent,
     CartComponent,
-    ListComponent
+    ListComponent,
+    CheckoutComponent
 
   ],
   imports: [
@@ -54,7 +57,8 @@ const routes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

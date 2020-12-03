@@ -1,4 +1,7 @@
 <div class="contenedor">
+    <mat-toolbar color="primary">
+      <span class="fill-remaining-space">Carro de compras</span>
+    </mat-toolbar>
     <table mat-table [dataSource]="products" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
@@ -30,7 +33,14 @@
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
       </table>
       <br>
-      <h1 align="center"> Total: {{total | currency}}</h1>
+      <mat-toolbar color="primary">
+        <span class="fill-remaining-space"><h1 align="center"> Total: {{total | currency}}</h1></span>
+        <span class="example-spacer"></span>
+        <button mat-raised-button color="primary" (click)="openDialog()" class="check">Checkout</button>
+      </mat-toolbar>
+      <br>
+
 </div>

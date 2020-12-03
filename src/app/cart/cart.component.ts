@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product} from '../product/product';
 import { DomSanitizer } from "@angular/platform-browser"
 import { CartService } from './cart.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CheckoutComponent } from '../checkout/checkout.component';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +14,7 @@ export class CartComponent implements OnInit {
   total: number = 0;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   products: Product[] = [];
-  constructor(public cartService: CartService , private sanitizer: DomSanitizer) { }
+  constructor(public cartService: CartService , private sanitizer: DomSanitizer, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -28,4 +30,9 @@ export class CartComponent implements OnInit {
   public getSantizeUrl(url : string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CheckoutComponent,{
+      width: '640px',disableClose: true 
+    });
+}
 }
