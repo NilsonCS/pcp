@@ -34,8 +34,8 @@ export class AddComponent implements OnInit {
         this.checkInUseEmail
       ],
       name: [null, Validators.required],
-      password: [null, [Validators.required, this.checkPassword]],
-      description: [
+      phone: [null, [Validators.required, this.checkPhone]],
+      direction: [
         null,
         [Validators.required, Validators.minLength(5), Validators.maxLength(100)]
       ],
@@ -99,9 +99,17 @@ export class AddComponent implements OnInit {
       ? "Password needs to be at least eight characters, one uppercase letter and one number"
       : "";
   }
+
+  checkPhone(control:any) {
+    let enteredPassword = control.value;
+    let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+    return !passwordCheck.test(enteredPassword) && enteredPassword
+      ? { requirements: true }
+      : null;
+  }
   
   onSubmit(post: any) {
-    this.service.createCompany({"companyId":post.companyId ,"name":post.nombre , "direction":post.direction, "phone":post.phone, "email":post.email}).subscribe(data => { alert("Guardado con exito!!!") ;});
+    this.service.createCompany({ "name":post.name , "direction":post.direction, "phone":post.phone, "email":post.email}).subscribe(data => { alert("Guardado con exito!!!") ;});
     
   }
 
