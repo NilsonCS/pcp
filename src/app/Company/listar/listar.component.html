@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr   class="text-center">
+                    <tr   class="text-center" *ngFor="let company of companies">
                         <td>{{company.companyId}}</td>
                         <td>{{company.name}}</td>
                         <td>{{company.direction}}</td>

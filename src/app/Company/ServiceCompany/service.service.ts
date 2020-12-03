@@ -9,15 +9,9 @@ import { Company } from '../model/Company';
 export class ServiceService {
   constructor(private http:HttpClient) { }
 
-  /*getCompany(): Observable<Company[]>{
-    // @ts-ignore
-    return this.http.get(this.urlEndPoint).pipe( map(response => response as Company[])
-    );
-  }*/
-
-Url:string = 'http://localhost:8080/v1/company/1';
+  Url:string = 'http://localhost:8080/v1/company/';
   getCompany(){
-  return this.http.get<Company>(this.Url);
+  return this.http.get<Company[]>(this.Url);
   }
 
 
