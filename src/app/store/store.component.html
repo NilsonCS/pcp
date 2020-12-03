@@ -7,10 +7,13 @@
         <mat-card-subtitle>{{product.model}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image [src]="getSantizeUrl(product.img)" alt="Fotografia de muestra" class="image">
-      <mat-card-content>
-        <p>
+      <mat-card-content align="center">
+        <h3>
+          {{product.model}}
+        </h3>
+        <h2>
           {{product.unitPrice | currency}}
-        </p>
+        </h2>
       </mat-card-content>
       <div align="center">
         <button mat-raised-button color="primary">Añadir al carrito</button>

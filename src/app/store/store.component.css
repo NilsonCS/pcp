@@ -1,10 +1,11 @@
 .contenedor{
-    max-width: 100%;
-    padding: 30px 15%;
-    padding-left: calc(15% + 20px);
+    padding: 30px 12%;
+    padding-left: calc(12% + 20px);
 }
 .prod {
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.10);
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 15px !important;
 }
 .prod:hover {
     transform: translateY(-2px);
@@ -14,5 +15,5 @@ button.mat-raised-button:hover{
     background-color: green;
 }
 .image {
-    height: 450px;
+    height: 350px;
 }
