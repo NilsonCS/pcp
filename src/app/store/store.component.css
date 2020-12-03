@@ -13,3 +13,6 @@
 button.mat-raised-button:hover{
     background-color: green;
 }
+.image {
+    height: 450px;
+}

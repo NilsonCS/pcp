@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { ServiceService } from '../app/Company/ServiceCompany/service.service';
 import { StoreComponent } from './store/store.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { ProductComponent } from './product/product.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
     ListarComponent,
     AddComponent,
     EditComponent,
-    StoreComponent
+    StoreComponent,
+    ProductComponent
 
   ],
   imports: [
