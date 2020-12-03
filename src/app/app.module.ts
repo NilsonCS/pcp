@@ -21,6 +21,7 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { ListComponent } from './city/list/list.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { FormComponent } from './producttype/form.component';
 
 
 
@@ -32,7 +33,9 @@ const routes: Routes = [
   {path: 'add', component: AddComponent},
   {path: 'edit', component: EditComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'list', component: ListComponent}
+  {path: 'list', component: ListComponent},
+  {path: 'producttype/form', component: FormComponent},
+
 ];
 
 
@@ -48,7 +51,8 @@ const routes: Routes = [
     ProductComponent,
     CartComponent,
     ListComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    FormComponent
 
   ],
   imports: [
@@ -59,7 +63,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
