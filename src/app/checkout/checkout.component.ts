@@ -101,7 +101,7 @@ getErrorPassword() {
 
 onSubmit(post: any) {
   this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1, "total":this.total, "contact":post.email, "details":post.description}).subscribe(data => {this.post = "Guardado con exito!!!";});
-  
+
 }
 close(){
   this.dialog.closeAll();

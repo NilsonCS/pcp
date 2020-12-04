@@ -1,0 +1,22 @@
+.container{
+    height: 660px;
+    align-items: center;
+}
+img {
+    max-width: 100%;
+    height: 500px;
+}
+.details {
+    padding: 5%;
+    align-items: center;
+}
+h1{
+    font-size: xx-large;
+    font-weight: bold;
+}
+.fill-remaining-space {
+    flex: 1 1 auto;
+ }
+ .icon {
+    cursor: pointer;
+  }

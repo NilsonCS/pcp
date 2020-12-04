@@ -3,6 +3,8 @@ import { ProductService } from '../product/product.service';
 import { Product} from '../product/product';
 import { DomSanitizer } from "@angular/platform-browser"
 import { CartService } from '../cart/cart.service';
+import { ProductComponent } from '../product/product.component';
+import { MatDialog } from '@angular/material/dialog'
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -10,13 +12,16 @@ import { CartService } from '../cart/cart.service';
 })
 export class StoreComponent implements OnInit {
   products: Product[]=[];
-  constructor(private productService: ProductService, private sanitizer: DomSanitizer, public cartService: CartService ) { }
+  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public cartService: CartService, public dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.getProducts();
   }
-  alert() {
-    //alert("ga");
+  alert(product: Product) {
+    this.productService.setLast(product);
+    const dialogRef = this.dialog.open(ProductComponent,{
+      width: '1040px',disableClose: true 
+    });
   }
   getProducts (){
     this.productService.getProducts().subscribe(products => this.products = products);

@@ -27,12 +27,14 @@ export class ListComponent implements OnInit {
     })
   }
 */
+
   ListCities(){
     this.router.navigate(["list"]);
   }
 
   NewCities(){
-    //this.router.navigate(["add"]);
+    this.router.navigate(["add-city"]);
   }
+
 }
 
