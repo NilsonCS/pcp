@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'listar', component: ListarComponent},
   {path: 'add', component: AddComponent},
   {path: 'edit', component: EditComponent},
-  {path: 'add-product', component: AddProductComponent},
+  {path: 'addProduct', component: AddProductComponent},
   {path: 'cart', component: CartComponent},
   {path: 'list', component: ListComponent},
   {path: 'producttype/form', component: FormComponent},

@@ -15,6 +15,10 @@
 
   
       <mat-form-field class="form-element">
+        <input matInput placeholder="Imagen" formControlName="img">
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
         <textarea matInput placeholder="Descripcion del Producto" formControlName="productDescription"></textarea>
         <mat-error *ngIf="!formGroup.controls['productDescription'].valid && formGroup.controls['direction'].touched">
           Campo requerido, debe ser de entre 10 y 100 caracteres;
@@ -41,17 +45,13 @@
       <mat-form-field class="form-element">
         <input matInput placeholder="Precio" formControlName="unitPrice">
       </mat-form-field>
-      
-      <mat-form-field class="form-element">
-        <input matInput placeholder="Weight" formControlName="weight">
-      </mat-form-field>
 
       <mat-form-field class="form-element">
         <input matInput placeholder="Moneda" formControlName="currency">
       </mat-form-field>
 
       <mat-form-field class="form-element">
-        <input matInput placeholder="Imagen" formControlName="img">
+        <input matInput placeholder="Weight" formControlName="weight">
       </mat-form-field>
   
       

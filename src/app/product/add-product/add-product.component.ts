@@ -119,7 +119,9 @@ export class AddProductComponent implements OnInit {
   }
   
   onSubmit(post: any) {
-    this.service.createProduct({ "productName":post.productName , "model":post.model, "productDescription":post.productDescription, "stock":post.stock, "weight":post.weight,"unitPrice":post.unitPrice,"currency":post.currency,"img":post.img})
+    this.service.createProduct({ "productName":post.productName , "model":post.model, "productDescription":post.productDescription,
+    "stock":post.stock, "weight":post.weight,"unitPrice":post.unitPrice,"currency":post.currency,"img":post.img,
+    "companyId":2, "productTypeId":1, "cityId":1  ,"brandId":1})
     .subscribe(data => { alert("El producto se guardo exitosamente") ;});
   }
 
