@@ -9,11 +9,19 @@ table {
 }
 button.check{
     height: 70%;
-    background-color: orangered;
+    background-color:green;
 }
 button.check:hover{
-    background-color: green;
+    background-color: darkgreen;
 }
 .example-spacer {
     flex: 1 1 auto;
+}
+th{
+    font-size: large;
+    font-weight: 800;
+}
+td{
+    font-size: medium;
+    font-weight: 600;
 }
