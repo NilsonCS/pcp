@@ -29,7 +29,8 @@ export class ProductComponent implements OnInit {
       duration: 2000,
     });
     sb.onAction().subscribe(() => {
-       this.router.navigateByUrl('/cart')
+      this.dialog.closeAll(); 
+      this.router.navigateByUrl('/cart')
     });
   }
 }
