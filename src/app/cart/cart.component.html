@@ -32,6 +32,13 @@
           <th mat-header-cell *matHeaderCellDef> Modelo </th>
           <td mat-cell *matCellDef="let element"> {{element.model}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="product">
+          <th mat-header-cell *matHeaderCellDef> Product </th>
+          <td mat-cell *matCellDef="let element"> 
+             <img [src]="getSantizeUrl(element.img)">
+          </td>
+        </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
