@@ -10,6 +10,7 @@
       </mat-error>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
       <input matInput placeholder="Apellidos" formControlName="lastName"  required>
       <mat-error *ngIf="!lastName.valid && lastName.touched">
@@ -17,6 +18,7 @@
       </mat-error>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
       <input matInput placeholder="Nombre de usuario" formControlName="username"  required>
       <mat-error *ngIf="!username.valid && username.touched">
@@ -24,6 +26,7 @@
       </mat-error>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
       <input matInput placeholder="Contraseña" formControlName="password" type="password"  required>
       <mat-hint>Las contraseñas deben tener al menos 8 caracteres, una mayuscula y un numero </mat-hint>
@@ -32,18 +35,22 @@
       </mat-error>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
       <input matInput placeholder="Id de la compañia" formControlName="companyId" required>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
       <input matInput placeholder="Id de la ciudad" formControlName="cityId" required>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
       <input matInput placeholder="Telefono" formControlName="phone" required>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
       <input matInput placeholder="Correo de contacto" formControlName="email"  required>
       <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
@@ -51,10 +58,12 @@
       </mat-error>
     </mat-form-field>
 
+    <br>
     <mat-form-field class="form-element">
-      <input matInput placeholder="Fecha de nacimiento YY/MM/DD" formControlName="birthday" required>
+      <input matInput placeholder="Fecha de nacimiento YY-MM-DD" formControlName="birthday" required>
     </mat-form-field>
 
+    <br>
     <div class="form-element">
       <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Registrar</button>
     </div>
