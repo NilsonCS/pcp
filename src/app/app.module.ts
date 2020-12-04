@@ -23,6 +23,7 @@ import { ListComponent } from './city/list/list.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FormComponent } from './producttype/form.component';
 import { AddCityComponent } from './city/add-city/add-city.component';
+import { AddProductComponent } from '../app/product/add-product/add-product.component';
 
 
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'listar', component: ListarComponent},
   {path: 'add', component: AddComponent},
   {path: 'edit', component: EditComponent},
+  {path: 'add-product', component: ProductComponent},
   {path: 'cart', component: CartComponent},
   {path: 'list', component: ListComponent},
   {path: 'producttype/form', component: FormComponent},
@@ -51,6 +53,7 @@ const routes: Routes = [
     EditComponent,
     StoreComponent,
     ProductComponent,
+    AddProductComponent,
     CartComponent,
     ListComponent,
     CheckoutComponent,
