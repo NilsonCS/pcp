@@ -41,7 +41,7 @@ getProducttype(){
   getProductTypee(productTypeId: any): Observable<Producttype>{
     return this.http.get<Producttype>(`${this.urlEndPoint}/${productTypeId}`).pipe(
       catchError(e => {
-        this.router.navigate(['/producttype']);
+        this.router.navigate(['/producttype/form']);
         console.error(e.error.mensaje);
         swal.fire('Error al editar', e.error.mensaje, 'error');
         return throwError(e);
