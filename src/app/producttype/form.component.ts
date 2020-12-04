@@ -11,7 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class FormComponent implements OnInit {
 
-   producttype: Producttype = new Producttype(2, '');
+   // @ts-ignore
+  producttype: Producttype = new Producttype();
    titulo = 'Crear nuevo tipo de producto';
 
   constructor(private productTypeService: ProducttypeService,
@@ -24,7 +25,6 @@ export class FormComponent implements OnInit {
 
 
   public create(): void{
-
     this.productTypeService.create(this.producttype)
       .subscribe(
         producttype => {
@@ -36,7 +36,7 @@ export class FormComponent implements OnInit {
 
   cargarProducttype(): void {
     this.activatedRoute.params.subscribe(params => {
-      let productTypeId = params ['productTypeId'];
+      const productTypeId = params.productTypeId;
       if (productTypeId) {
         this.productTypeService.getProductTypee(productTypeId).subscribe((productType) => this.producttype = productType);
       }

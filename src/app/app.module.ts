@@ -38,6 +38,7 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'list', component: ListComponent},
   {path: 'producttype/form', component: FormComponent},
+  {path: 'producttype/form/:id', component: FormComponent},
   {path: 'add-city', component: AddCityComponent}
 
 ];

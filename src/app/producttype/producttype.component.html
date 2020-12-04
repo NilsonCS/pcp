@@ -13,7 +13,7 @@
          <td>{{ producttype.productTypeId}}</td>
          <td align="center">{{ producttype.typeName}}</td>
          <td>
-           <button type="button" name="editar" [routerLink]="['/producttype/form', producttype.productTypeId]" class="btn btn-primary btn-sm">editar</button>
+           <button type="button" name="editar" [routerLink]="['/producttype/form/', producttype.productTypeId]" class="btn btn-primary btn-sm">editar</button>
          </td>
        </tr>
 
@@ -28,7 +28,9 @@
 </div>
 
 <div>
-  <button routerLink="/producttype/form">
+  <button class="btn btn-rounded btn-primary" type="button" routerLink="/producttype/form">
     Crear nuevo tipo de producto
   </button>
 </div>
+
+
