@@ -4,6 +4,7 @@ import { DomSanitizer } from "@angular/platform-browser"
 import { CartService } from './cart.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutComponent } from '../checkout/checkout.component';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ import { CheckoutComponent } from '../checkout/checkout.component';
 })
 export class CartComponent implements OnInit {
   total: number = 0;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'weight', 'symbol', 'position'];
   products: Product[] = [];
   constructor(public cartService: CartService , private sanitizer: DomSanitizer, private dialog: MatDialog) { }
 
@@ -34,5 +35,10 @@ export class CartComponent implements OnInit {
     const dialogRef = this.dialog.open(CheckoutComponent,{
       width: '640px',disableClose: true 
     });
-}
+  }
+  delete(product: Product){
+    this.cartService.deleteProduct(product);
+    this.getProducts();
+    this.getTotal();
+  }
 }

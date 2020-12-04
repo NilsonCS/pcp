@@ -4,7 +4,9 @@ import { Product} from '../product/product';
 import { DomSanitizer } from "@angular/platform-browser"
 import { CartService } from '../cart/cart.service';
 import { ProductComponent } from '../product/product.component';
-import { MatDialog } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -12,7 +14,8 @@ import { MatDialog } from '@angular/material/dialog'
 })
 export class StoreComponent implements OnInit {
   products: Product[]=[];
-  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public cartService: CartService, public dialog: MatDialog ) { }
+  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public cartService: CartService, public dialog: MatDialog
+    ,private snackBar: MatSnackBar, private router: Router ) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -31,6 +34,11 @@ export class StoreComponent implements OnInit {
   }
   addToCart(product: Product){
     this.cartService.addProduct(product);
-    alert("El producto fue añadido")
+    let sb = this.snackBar.open("Producto añadido","Ver carrito", {
+      duration: 2000,
+    });
+    sb.onAction().subscribe(() => {
+       this.router.navigateByUrl('/cart')
+    });
   }
 }
