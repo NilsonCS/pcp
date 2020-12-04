@@ -109,7 +109,7 @@ export class AddComponent implements OnInit {
   }
   
   onSubmit(post: any) {
-    this.service.createCompany({ "name":post.name , "direction":post.direction, "phone":post.phone, "email":post.email}).subscribe(data => { alert("Guardado con exito!!!") ;});
+    this.service.createCompany({ "name":post.name , "direction":post.direction, "phone":post.phone, "email":post.email}).subscribe(data => { alert("La Empresa se guardo exitosamente") ;});
     
   }
 
