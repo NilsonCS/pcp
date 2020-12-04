@@ -1,0 +1,64 @@
+<p>
+
+</p>
+<div class="container container col-md-6">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Nombres" formControlName="firstName"  required>
+      <mat-error *ngIf="!firstName.valid && firstName.touched">
+        {{titleAlert}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Apellidos" formControlName="lastName"  required>
+      <mat-error *ngIf="!lastName.valid && lastName.touched">
+        {{titleAlert}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Nombre de usuario" formControlName="username"  required>
+      <mat-error *ngIf="!username.valid && username.touched">
+        {{titleAlert}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Contraseña" formControlName="password" type="password"  required>
+      <mat-hint>Las contraseñas deben tener al menos 8 caracteres, una mayuscula y un numero </mat-hint>
+      <mat-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
+        {{ getErrorPassword() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Id de la compañia" formControlName="companyId" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Id de la ciudad" formControlName="cityId" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Telefono" formControlName="phone" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Correo de contacto" formControlName="email"  required>
+      <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+        {{ getErrorEmail() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Fecha de nacimiento YY/MM/DD" formControlName="birthday" required>
+    </mat-form-field>
+
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Registrar</button>
+    </div>
+
+
+  </form>
+</div>
