@@ -24,6 +24,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { FormComponent } from './producttype/form.component';
 import { AddCityComponent } from './city/add-city/add-city.component';
 import { AddProductComponent } from '../app/product/add-product/add-product.component';
+import { RegisterComponent } from './user/register/register.component';
 
 
 
@@ -39,8 +40,8 @@ const routes: Routes = [
   {path: 'list', component: ListComponent},
   {path: 'producttype/form', component: FormComponent},
   {path: 'producttype/form/:id', component: FormComponent},
-  {path: 'add-city', component: AddCityComponent}
-
+  {path: 'add-city', component: AddCityComponent},
+  {path: 'user/register', component: RegisterComponent}
 ];
 
 
@@ -59,7 +60,8 @@ const routes: Routes = [
     ListComponent,
     CheckoutComponent,
     FormComponent,
-    AddCityComponent
+    AddCityComponent,
+    RegisterComponent
 
   ],
   imports: [
