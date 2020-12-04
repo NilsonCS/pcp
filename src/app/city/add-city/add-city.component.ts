@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Observable } from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import {ServiceService} from '../serviceCity/service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-city',
@@ -14,19 +15,19 @@ export class AddCityComponent implements OnInit {
   titleAlert: string = "This field is required";
   post: any = "";
 
-  constructor(private formBuilder: FormBuilder, private serviceService: ServiceService, private dialog: MatDialog) { }
+  constructor(private formBuilder: FormBuilder, private serviceService: ServiceService, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
   }
   createForm(){
     this.formGroup = this.formBuilder.group({
-      name: [null, Validators.required],
+      cityName: [null, Validators.required],
       validate: ""
     });
   }
   onSubmit(post: any) {
-    this.serviceService.createCity({"cityId": post.cityId, "cityName": post.cityName})
+    this.serviceService.createCity({"cityName": post.cityName}).subscribe(data => { alert("Ciudad añadida");});
   }
   close(){
     this.dialog.closeAll();
