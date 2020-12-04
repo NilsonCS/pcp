@@ -5,6 +5,7 @@ import { CartService } from './cart.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutComponent } from '../checkout/checkout.component';
 import { ProductComponent } from '../product/product.component';
+import { ProductService } from '../product/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,9 +14,9 @@ import { ProductComponent } from '../product/product.component';
 })
 export class CartComponent implements OnInit {
   total: number = 0;
-  displayedColumns: string[] = ['name', 'weight', 'symbol', 'product', 'position'];
+  displayedColumns: string[] = ['name', 'weight', 'symbol', 'product', 'details', 'position'];
   products: Product[] = [];
-  constructor(public cartService: CartService , private sanitizer: DomSanitizer, private dialog: MatDialog) { }
+  constructor(public cartService: CartService , private sanitizer: DomSanitizer, private dialog: MatDialog, public productService: ProductService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -41,4 +42,10 @@ export class CartComponent implements OnInit {
     this.getProducts();
     this.getTotal();
   }
+  alert(product: Product) {
+    this.productService.setLast(product);
+    const dialogRef = this.dialog.open(ProductComponent,{
+      width: '1040px',disableClose: true 
+    });
+  } 
 }
