@@ -8,9 +8,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ProductService {
   url: string = 'http://localhost:8080/v1/product/';
+  last: any ;
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
   }
+  setLast(product: Product){
+      this.last = product;
+  }
+  getLast(): Product{
+    return this.last;
+  }
+  
 }
