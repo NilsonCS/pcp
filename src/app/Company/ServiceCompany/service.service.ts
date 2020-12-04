@@ -17,10 +17,18 @@ export class ServiceService {
   //CreateCompany
   createCompany(company:any):Observable<any>{
     return this.http.post<any>(this.Url,company);
-
   }
 
+  //Get company Id
+  //para mostrar fila seleccinada y mostrar en el formulario
+  getCompanyId(id:any){
+    return  this.http.get<Company>(this.Url+"/"+id);
+  }
 
-
+  //update Company 
+  //Para guradar los datos actualizados
+  updateCompany(company:Company){
+    return this.http.put<Company>(this.Url+"/"+company.companyId,company);
+  }
 
 }

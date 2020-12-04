@@ -12,6 +12,7 @@ export class ListarComponent implements OnInit {
   title = "Ejemplo";
 
   //companies: Company[];
+  //GetCompany para llamar lista de companies
   companies: any;
   constructor(private service:ServiceService ,private router:Router) { }
 
@@ -21,14 +22,13 @@ export class ListarComponent implements OnInit {
       this.companies=data;
     })  
   }  
- /** ngOnInit(): void {
-    this.service.getCompany()
-    .subscribe(companies =>{
-      this.companies = companies;
-    })  
-  }
-*/
 
+//metodo relacionado con Listar.component.html
+//Envio del "id" de la fila seleccionada
+  Editar(company:Company):void{
+    localStorage.setItem("id", company.companyId.toString());
+    this.router.navigate(["edit"]);
+  }
 
   Listar(){
     this.router.navigate(["listar"]);
