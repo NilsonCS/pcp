@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">Añade una ciudad</span>
+  <mat-icon class="icon" (click)="close()">close</mat-icon>
+</mat-toolbar>
+
+<div class="container" *ngIf="!post; else forminfo">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Nombre" formControlName="name">
+    </mat-form-field>
+
+
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Crear</button>
+    </div>
+
+  </form>
+</div>
+
+<ng-template #forminfo>
+  <div class="container">
+    {{ post | json }}
+  </div>
+
+</ng-template>

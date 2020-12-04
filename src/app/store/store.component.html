@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px grid" class="contenedor" fxLayoutAlign="flex-start">
   <div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products" >
-    <mat-card class="prod" (click)="alert()">
+    <mat-card class="prod" (click)="alert(product)">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{product.productName}}</mat-card-title>
