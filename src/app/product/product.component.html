@@ -12,4 +12,7 @@
     <span><h2>Precio: {{product.unitPrice | currency}}</h2></span>
     <span><h2>Especificaciones tecnicas: {{product.productDescription}}</h2></span>
 </div>
+<div align="center">
+    <button mat-raised-button color="primary" (click)="addToCart(product)" >Añadir al carrito</button>
+  </div>
 </div>
