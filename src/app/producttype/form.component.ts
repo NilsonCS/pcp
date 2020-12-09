@@ -38,20 +38,26 @@ export class FormComponent implements OnInit {
   }
 
   cargarProducttype(): void {
-    this.activatedRoute.params.subscribe(params => {
-      const productTypeId = params.productTypeId;
+    this.activatedRoute.params.subscribe(
+      params => {
+      const productTypeId = params['productTypeId'];
+      console.log(productTypeId);
+
       if (productTypeId) {
-        this.productTypeService.getProductTypee(productTypeId).subscribe((productType) => this.producttype = productType);
+        this.productTypeService.getProductTypeU(productTypeId).subscribe((productType) => this.producttype = productType);
+        console.log(productTypeId);
+
       }
+      console.log(productTypeId);
     });
   }
 
-  update(): void {
-    this.productTypeService.update(this.producttype)
+  update(productType: Producttype): void {
+    this.productTypeService.update(this.producttype.productTypeId, this.producttype)
       .subscribe(
         json => {
           this.router.navigate(['/producttype']);
-          swal.fire('Tipo de producto Actualizado', `${json.mensaje}: ${json.producttype.productTypeId}, ${json.producttype.typeName}`, 'success');
+        //  swal.fire('Tipo de producto Actualizado', `${json.mensaje}: ${json.producttype.typeName}`, 'success');
         },
         err => {
         //  this.errores = err.error.errors as string[];

@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {Producttype} from "./producttype";
+import {Producttype} from './producttype';
 import {catchError, map} from 'rxjs/operators';
-import swal from "sweetalert2";
+import swal from 'sweetalert2';
 import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProducttypeService {
-   urlEndPoint:string = 'http://localhost:8080/v1/producttype/';
-   urlEndPoint2:string = 'http://localhost:8080/v1/producttype/2';
+   urlEndPoint = 'http://localhost:8080/v1/producttype/';
+   urlEndPoint2 = 'http://localhost:8080/v1/producttype/';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -50,10 +50,27 @@ getProducttype(){
     );
   }
 
-  update(productType: Producttype): Observable<any> {
-    return this.http.patch<any>(`${this.urlEndPoint2}`, productType, { headers: this.httpHeaders }).pipe(
+  getProductTypeU(productTypeId: any): Observable<Producttype> {
+    return this.http.get<Producttype>(`${this.urlEndPoint}/${productTypeId}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/producttype']);
+        console.error(e.error.mensaje);
+        swal.fire('Error al editar', e.error.mensaje, 'error');
+        return throwError(e);
+        console.log('ACA el prodcut' + productTypeId);
+      })
+    );
+  }
+
+  // update(productType: Producttype): Observable<any> {
+  update(productTypeId: number, productType: Producttype ): Observable<Producttype> {
+    productTypeId = productType.productTypeId;
+    console.log('' + productTypeId);
+
+    return this.http.patch<any>(`${this.urlEndPoint}${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
    // return this.http.patch<any>(`${this.urlEndPoint2}/${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
       catchError(e => {
+        console.log('' + productTypeId);
 
         if (e.status === 400) {
           return throwError(e);
