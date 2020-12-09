@@ -1,19 +1,23 @@
-<!--<ul class="alert alert-danger" *ngIf="errores?.length > 0">-->
-<!--  <li *ngFor="let err of errores">-->
-<!--    {{ err }}-->
-<!--  </li>-->
-<!--</ul>-->
+
+
 
 <div class="card bg-dark text-white">
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
 
-    <form #clienteForm="ngForm">
+    <form #productTypeForm="ngForm">
       <div class="form-group row">
-        <label for="type" class="col-form-label col-sm-2">Nombre</label>
+        <label for="typeName" class="col-form-label col-sm-2">Producttype</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="producttype.typeName" name="nombre" #nombre="ngModel"> <!-- required minlength="4" -->
-
+          <input type="text" class="form-control" [(ngModel)]="producttype.typeName" name="nombre" #typeName="ngModel"> <!-- required minlength="4" -->
+          <div class="alert alert-danger" *ngIf="typeName.invalid && (typeName.dirty || typeName.touched)">
+            <div *ngIf="typeName.formDirective.ValidationError.minlength(4)">
+              Nombre es requerido
+            </div>
+            <div *ngIf="typeName">
+              Nombre debe tener al menos 4 caracteres
+            </div>
+          </div>
         </div>
       </div>
     </form>
@@ -24,10 +28,14 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!producttype.typeName else elseBlock" [disabled]="!clienteForm.form.valid">Crear</button>
-<ng-template #elseBlock>
-  <button class="btn btn-primary" role="button" (click)='create()' [disabled]="!clienteForm.form.valid">Crear</button>
+          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!producttype.productTypeId else elseBlock" [disabled]="!productTypeForm.form.valid">Crear</button>
+
+
+          <ng-template #elseBlock>
+  <button class="btn btn-primary" role="button" (click)='update(producttype)' [disabled]="!productTypeForm.form.valid">Actualizar</button>
 
 </ng-template>
+          <button class="btn btn-primary" role="button" (click)='update(producttype)' >Actualizar</button>
+
         </div>
       </div>

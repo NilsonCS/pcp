@@ -28,3 +28,7 @@
   .icon {
     cursor: pointer;
   }
+  .form-element {
+    font-weight: bold;
+    font-size: large;
+  }
