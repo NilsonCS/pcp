@@ -62,15 +62,14 @@ getProducttype(){
     );
   }
 
-  // update(productType: Producttype): Observable<any> {
-  update(productTypeId: number, productType: Producttype ): Observable<Producttype> {
-    productTypeId = productType.productTypeId;
-    console.log('' + productTypeId);
+   update(productType: Producttype): Observable<Producttype> {
 
-    return this.http.patch<any>(`${this.urlEndPoint}${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
+     return this.http.patch<Producttype>(
+       `${this.urlEndPoint}/${productType.productTypeId}`, productType);
+
+  //  return this.http.patch<Producttype>(`${this.urlEndPoint}${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
    // return this.http.patch<any>(`${this.urlEndPoint2}/${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
-      catchError(e => {
-        console.log('' + productTypeId);
+     catchError(e => {
 
         if (e.status === 400) {
           return throwError(e);
@@ -79,8 +78,7 @@ getProducttype(){
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');
         return throwError(e);
-      })
-    );
+      });
   }
   delete(id: number): Observable<Producttype> {
     return this.http.delete<Producttype>(`${this.urlEndPoint}/${id}`, { headers: this.httpHeaders }).pipe(

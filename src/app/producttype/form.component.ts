@@ -12,6 +12,8 @@ import {catchError} from 'rxjs/operators';
   templateUrl: './form.component.html'
 })
 export class FormComponent implements OnInit {
+  private locator = (p: Producttype, productTypeId: number) => p.productTypeId === productTypeId;
+
 
   // @ts-ignore
   producttype: Producttype = new Producttype();
@@ -52,10 +54,10 @@ export class FormComponent implements OnInit {
     });
   }
 
-  update(productType: Producttype): void {
-    this.productTypeService.update(this.producttype.productTypeId, this.producttype)
+  update(productType: Producttype) {
+    this.productTypeService.update(productType)
       .subscribe(
-        json => {
+        p => {
           this.router.navigate(['/producttype']);
         //  swal.fire('Tipo de producto Actualizado', `${json.mensaje}: ${json.producttype.typeName}`, 'success');
         },
