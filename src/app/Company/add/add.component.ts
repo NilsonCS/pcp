@@ -14,7 +14,7 @@ import { ServiceService } from '../ServiceCompany/service.service';
 export class AddComponent implements OnInit {
 
   public formGroup: any;
-  titleAlert: string = "This field is required";
+  titleAlert: string = "Este campo es requerido.";
   post: any = "";
   total: number = 0;
   
@@ -34,10 +34,13 @@ export class AddComponent implements OnInit {
         this.checkInUseEmail
       ],
       name: [null, Validators.required],
-      phone: [null, [Validators.required, this.checkPhone]],
+      phone: [
+        null,
+        [Validators.required, Validators.minLength(8), Validators.maxLength(8)]
+       ],
       direction: [
         null,
-        [Validators.required, Validators.minLength(5), Validators.maxLength(100)]
+        [Validators.required, Validators.minLength(10), Validators.maxLength(100)]
       ],
       validate: ""
     });
@@ -61,14 +64,7 @@ export class AddComponent implements OnInit {
     return this.formGroup.get("name") as FormControl;
   }
   
-  checkPassword(control:any) {
-    let enteredPassword = control.value;
-    let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
-    return !passwordCheck.test(enteredPassword) && enteredPassword
-      ? { requirements: true }
-      : null;
-  }
-  
+
   checkInUseEmail(control:any) {
     // mimic http database access
     let db = ["jack@torchwood.com"];
@@ -84,36 +80,26 @@ export class AddComponent implements OnInit {
   
   getErrorEmail() {
     return this.formGroup.get("email").hasError("required")
-      ? "Field is required"
+      ? "Este campo es requerido"
       : this.formGroup.get("email").hasError("pattern")
       ? "Not a valid emailaddress"
       : this.formGroup.get("email").hasError("alreadyInUse")
       ? "This emailaddress is already in use"
       : "";
   }
-  
-  getErrorPassword() {
-    return this.formGroup.get("password").hasError("required")
-      ? "Field is required (at least eight characters, one uppercase letter and one number)"
-      : this.formGroup.get("password").hasError("requirements")
-      ? "Password needs to be at least eight characters, one uppercase letter and one number"
-      : "";
-  }
 
-  checkPhone(control:any) {
-    let enteredPassword = control.value;
-    let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
-    return !passwordCheck.test(enteredPassword) && enteredPassword
-      ? { requirements: true }
-      : null;
+  getErrorPhone() {
+    return this.formGroup.get("phone").hasError("required")
+      ? "El número de celular debe ser de 8 digitos": "";
   }
+  
+
+
   
   onSubmit(post: any) {
     this.service.createCompany({ "name":post.name , "direction":post.direction, "phone":post.phone, "email":post.email}).subscribe(data => { alert("La Empresa se guardo exitosamente") ;});
     
   }
-
-
 
 
 
@@ -127,5 +113,12 @@ export class AddComponent implements OnInit {
   Nuevo(){
     this.router.navigate(["add"]);
   }
+
+  //imagen
+  myimage:string = "assets/images/background.jpg";
+
+
+
+
 
 }

@@ -1,54 +1,82 @@
-<p>add works!</p>
+  <!---->
 
-<div class="container">
-    <button (click)="Listar()"  class="btn btn-info"> Lista </button>
-    <button (click)="Nuevo()" class="btn btn-info"  style="margin-left: 10px; "> Agregar </button>
-</div>
 <li></li>
+<div class="container">
+  <button (click)="Listar()"  class="btn btn-info"> Lista </button>
+  <button (click)="Nuevo()" class="btn btn-info"  style="margin-left: 10px; "> Agregar </button>
+</div>
 
 
-  
-  <div class="container col-md-6" > 
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
-  
-  
-      
-  
-      <mat-form-field class="form-element">
-        <textarea matInput placeholder="Dirección" formControlName="direction"></textarea>
-        <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
-          Campo requerido, debe ser de entre 10 y 100 caracteres;
-        </mat-error>
-      </mat-form-field>
+<!--prueba de img 
+<div class="jumbotron big-banner"  >
+  <img [src]="myimage" alt="">
+</div>
+-->
+    <div class="container" id="registration-form">  
+      <div class="image"></div>
+        <div class="frm">
+            <h1>Registro</h1>
+            <form  [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
 
-      <mat-form-field class="form-element">
-        <input matInput placeholder="Nombre de la Empresa" formControlName="name">
-        <mat-error *ngIf="!name.valid && name.touched">
-          {{ titleAlert }}
-        </mat-error>
-      </mat-form-field>
-  
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input matInput class="form-control" placeholder="Nombre de la Empresa" formControlName="name">
+                    
+                    <mat-error *ngIf="!name.valid && name.touched">
+                      {{ titleAlert }}
+                    </mat-error>     
+                </div>
 
-      <mat-form-field class="form-element">
-        <input matInput placeholder="Telefono" formControlName="phone"  >
-      </mat-form-field>
+                <div class="form-group">
+                    <label for="direction">Dirección:</label>
+                    <textarea matInput class="form-control" placeholder="Dirección de la empresa" formControlName="direction"></textarea>
+                   
+                    <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
+                      Este campo es requerido, la dirección debe estar comprendida entre 10 y 100 caracteres.
+                    </mat-error>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefono:</label>
+                    <input matInput class="form-control" placeholder="Telefono" formControlName="phone">
+
+                    <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
+                      El número de celular debe ser de 8 digitos
+                    </mat-error>   
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input matInput  class="form-control" placeholder="Correo Electrónico" formControlName="email">
+
+                    <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+                      {{ getErrorEmail() }}
+                    </mat-error>
+                </div>
+             
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
 
 
-      <mat-form-field class="form-element">
-        <input matInput placeholder="Correo Electrónico" formControlName="email">
-        <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
-          {{ getErrorEmail() }}
-        </mat-error>
-      </mat-form-field>
-  
-      
 
-  
-      <div class="form-element">
-        <button mat-raised-button color="primary" type="submit" class="button" >Guardar</button>
-      </div>
-      
-    </form>
+<!-- prueba para fondo de pantalla
+  <div class="jumbotron"  >
+  <div class="intro">
+    <img [src]="myimage" >
+    <h1>hola mundo hola que tal....................</h1>
+    <button>Guardar</button>
   </div>
-  
+</div>
+
+-->
+
+
+
+
   
