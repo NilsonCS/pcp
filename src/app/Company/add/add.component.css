@@ -1,33 +1,26 @@
  
 
-.jumbotron{
-	background-image: url("../../../assets/images/background.jpg") no-repeat;
-	
-/**	min-height: 100%;
+#fondo{
 	background-size: cover;
-    background-position: center;
     background-attachment: fixed;
-*/
 }
 
-body{
-	background-color: transparent;
-}
 
 #registration-form{
 	max-width: 800px;
 	margin: 120px auto;
 }
-/**
+
+/** img junto al registro */
 #registration-form .image{
 	float:left;
-	background-image: url("desk.jpg");
+	background-image: url("../../../assets/images/desk.jpg");
 	height: 500px;
 	width: 50%;
 	background-size: cover;
 	background-position: 25%;
 }
-*/
+
 #registration-form .frm{
 	float:right;
 	height: 500px;
