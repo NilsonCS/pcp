@@ -135,8 +135,6 @@ export class EditComponent implements OnInit {
         'direction': this.datosCompany.direction,
         'phone': this.datosCompany.phone,
         'email': this.datosCompany.email
-
-        
       })   
 //        console.log(this.editarForm.value); 
 //        console.log(data);
@@ -144,6 +142,7 @@ export class EditComponent implements OnInit {
   }
 /** */
  //nuevo
+ //guardamoa los datos actualizados
   company:any;
   actualizarCompany(company:any){
     this.service.updateCompany(company)

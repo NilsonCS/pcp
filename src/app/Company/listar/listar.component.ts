@@ -23,12 +23,19 @@ export class ListarComponent implements OnInit {
     })  
   }  
 
-//PRUEBA
-//metodo relacionado con Listar.component.html
-//Envio del "id" de la fila seleccionada
+  //PRUEBA
+  //metodo relacionado con Listar.component.html
+  //Envio del "id" de la fila seleccionada
   editCompany(id:any){
     this.router.navigate(["edit", id]);
   }
+
+  //Boton eliminar
+  eliminar(){
+    console.log("eliminar");
+  }
+
+
 
   Listar(){
     this.router.navigate(["listar"]);
