@@ -14,7 +14,10 @@ export class ListarComponent implements OnInit {
   //companies: Company[];
   //GetCompany para llamar lista de companies
   companies: any;
-  constructor(private service:ServiceService ,private router:Router) { }
+  company:Company[];
+  constructor(private service:ServiceService ,private router:Router) {
+    this.company = [];
+   }
 
   ngOnInit(): void {
     this.service.getCompany()
@@ -23,12 +26,24 @@ export class ListarComponent implements OnInit {
     })  
   }  
 
-//PRUEBA
-//metodo relacionado con Listar.component.html
-//Envio del "id" de la fila seleccionada
+  //PRUEBA
+  //metodo relacionado con Listar.component.html
+  //Envio del "id" de la fila seleccionada
   editCompany(id:any){
     this.router.navigate(["edit", id]);
   }
+
+  //Boton eliminar
+  eliminar(company:Company){
+    this.service.deleteCompany(company.companyId)
+    .subscribe( data =>{
+      this.company = this.company.filter(co=>co!== company);
+      alert("Compañia Eliminada Exitosamente");
+      console.log(data);
+    })
+  }
+
+
 
   Listar(){
     this.router.navigate(["listar"]);
