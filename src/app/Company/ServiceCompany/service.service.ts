@@ -27,8 +27,13 @@ export class ServiceService {
 
   //update Company 
   //Para guardar los datos actualizados
-  updateCompany(company:any){
+  /**
+  updateCompany(company:any):Observable<any>{
     return this.http.put<any>(this.Url+"/"+company.companyId,company);
+  }
+ */
+  updateCompany(company:any):Observable<any>{
+    return this.http.put<any>(this.Url,  company );
   }
 
 }

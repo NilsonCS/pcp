@@ -99,13 +99,10 @@ export class EditComponent implements OnInit {
   }
   
   
-
   onSubmit(put: any) {
-    this.service.updateCompany({ "name":put.name , "direction":put.direction, "phone":put.phone, "email":put.email}).subscribe(data => { alert("Empresa Actualizada Exitosamente") ;});
+    this.service.updateCompany({ "name":put.name , "direction":put.direction, "phone":put.phone, "email":put.email}).subscribe(data => { alert("La Empresa se Actualizo exitosamente") ;});
     
   }
-
-
 
 
   /**ESTRUCTURA DE COMPANY PARA EDITAR*/
@@ -125,8 +122,8 @@ export class EditComponent implements OnInit {
   Edit(){
     let companyId = this.activerouter.snapshot.paramMap.get('id');
     this.service.getCompanyId(companyId).subscribe(data =>{ 
-      this.datosCompany=data;
-
+    
+      this.datosCompany=data;   //pasamos los datos de Company(es decir la data) a datosCompany
       this.editarForm.setValue({
         'companyId': companyId,
         'name': this.datosCompany.name,
@@ -136,24 +133,21 @@ export class EditComponent implements OnInit {
 
         
       })   
-        /** 
-      this.editarForm.setValue({
-        'companyId': companyId,
-        'name': this.datosCompany.name,
-        'direction': this.datosCompany.direction,
-        'phone': this.datosCompany.phone,
-        'email': this.datosCompany.email
-        
-      })   
-      */  
-        console.log(this.editarForm.value); 
-        console.log(data);
+//        console.log(this.editarForm.value); 
+//        console.log(data);
     })
   }
-
-
+/** 
+  company:any;
+  actualizarCompany(company:any){
+    this.service.updateCompany(company).subscribe( data =>{
+      this.company = data;
+      console.log(data);
+    })
+  }
+*/
   /*boton que tiene Metodo para Actualizar
-  Actualizar(company:any){
+  actualizarCompany(company:any){
     this.service.updateCompany(company)
     .subscribe(data=> {
       this.company=data;
