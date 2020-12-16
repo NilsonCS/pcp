@@ -11,7 +11,7 @@
 	margin: 120px auto;
 }
 
-/** img junto al registro */
+/** img junto al registro	 */
 #registration-form .image{
 	float:left;
 	background-image: url("../../../assets/images/desk.jpg");
@@ -76,38 +76,3 @@
 	}
 }
 
-
-
-/**
-.fill-remaining-space {
-    flex: 1 1 auto;
-  }
-  
-  .container {
-    align-items: center;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  .form {
-    min-width: 150px;
-    width: 100%;
-  }
-  
-  .form-element {
-    padding: 5px 0px 25px 2px;
-    width: 100%;
-    font-size: large;
-    font-weight: 500;
-  }
-  
-  .button {
-    font-size: large;
-    font-weight: bold;
-    width: 100%;
-  }
-  .icon {
-    cursor: pointer;
-  }
-
-  */

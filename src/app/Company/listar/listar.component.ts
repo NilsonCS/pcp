@@ -23,11 +23,11 @@ export class ListarComponent implements OnInit {
     })  
   }  
 
+//PRUEBA
 //metodo relacionado con Listar.component.html
 //Envio del "id" de la fila seleccionada
-  Editar(company:Company):void{
-    localStorage.setItem("id", company.companyId.toString());
-    this.router.navigate(["edit"]);
+  editCompany(id:any){
+    this.router.navigate(["edit", id]);
   }
 
   Listar(){

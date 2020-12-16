@@ -3,36 +3,67 @@
     <button (click)="Listar()"  class="btn btn-info"> Volver </button>
 </div>
   
-<div class="container col-md-6" > 
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+
+
+<!--prueba fondo de img 
+<div class="container" id="fondo">
+  <img [src]="myimage" class="img-fluid" style="position: absolute; right: 0; top: 0; z-index: -100;">
+</div>
+-->
+    <div class="container" id="registration-form">  
+      <div class="image"></div>
+        <div class="frm">
+            <h1>Registro</h1>
+            <form  [formGroup]="editarForm" (ngSubmit)="onSubmit(editarForm.value)" class="form">
+
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input matInput class="form-control" placeholder="Nombre de la Empresa" formControlName="name">
+                    
+                    <mat-error *ngIf="!name.valid && name.touched">
+                      {{ titleAlert }}
+                    </mat-error>     
+                </div>
+
+                <div class="form-group">
+                    <label for="direction">Dirección:</label>
+                    <textarea matInput class="form-control" placeholder="Dirección de la empresa" formControlName="direction"></textarea>
+                   
+                    <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
+                      Este campo es requerido, la dirección debe estar comprendida entre 10 y 100 caracteres.
+                    </mat-error>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefono:</label>
+                    <input matInput class="form-control" placeholder="Telefono" formControlName="phone">
+
+                    <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
+                      El número de celular debe ser de 8 digitos
+                    </mat-error>   
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input matInput  class="form-control" placeholder="Correo Electrónico" formControlName="email">
+
+                    <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+                      {{ getErrorEmail() }}
+                    </mat-error>
+                </div>
+             
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg">Actualizar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
   
-      <mat-form-field class="form-element">
-        <textarea matInput placeholder="Dirección" formControlName="direction"></textarea>
-
-      </mat-form-field>
-
-      <mat-form-field class="form-element">
-        <input matInput placeholder="Nombre de la Empresa" formControlName="name">
-        
-      </mat-form-field>
-  
-
-      <mat-form-field class="form-element">
-        <input matInput placeholder="Telefono" formControlName="phone"  >
-      </mat-form-field>
-
-
-      <mat-form-field class="form-element">
-        <input matInput placeholder="Correo Electrónico" formControlName="email">
-       
-      </mat-form-field>
-  
-      
-
-  
-      <div class="form-element">
-        <button mat-raised-button color="primary" type="submit" class="button" >Guardar</button>
-      </div>
-      
-    </form>
-  </div>

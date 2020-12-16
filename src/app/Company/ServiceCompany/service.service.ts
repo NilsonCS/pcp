@@ -9,7 +9,7 @@ import { Company } from '../model/Company';
 export class ServiceService {
   constructor(private http:HttpClient) { }
 
-  Url:string = 'http://localhost:8080/v1/company/';
+  Url:string = 'http://localhost:8080/v1/company';
   getCompany(){
   return this.http.get<Company[]>(this.Url);
   }
@@ -20,15 +20,20 @@ export class ServiceService {
   }
 
   //Get company Id
-  //para mostrar fila seleccinada y mostrar en el formulario
-  getCompanyId(id:any){
-    return  this.http.get<Company>(this.Url+"/"+id);
+  //para capturar la fila seleccinada y mostrar en el formulario
+  getCompanyId(id:any):Observable<any>{
+    return  this.http.get<Company[]>(this.Url+"/"+id);
   }
 
   //update Company 
-  //Para guradar los datos actualizados
-  updateCompany(company:Company){
-    return this.http.put<Company>(this.Url+"/"+company.companyId,company);
+  //Para guardar los datos actualizados
+  /**
+  updateCompany(company:any):Observable<any>{
+    return this.http.put<any>(this.Url+"/"+company.companyId,company);
+  }
+ */
+  updateCompany(company:any):Observable<any>{
+    return this.http.put<any>(this.Url,  company );
   }
 
 }
