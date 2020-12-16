@@ -25,11 +25,15 @@ import { FormComponent } from './producttype/form.component';
 import { AddCityComponent } from './city/add-city/add-city.component';
 import { AddProductComponent } from '../app/product/add-product/add-product.component';
 import { RegisterComponent } from './user/register/register.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { BrandComponent } from './brand/brand.component';
+
 
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/store', pathMatch: 'full'},
+  { path: "", redirectTo: "/table", pathMatch: "full" },
   {path: 'producttype', component: ProducttypeComponent},
   {path: 'store', component: StoreComponent},
   {path: 'listar', component: ListarComponent},
@@ -61,7 +65,9 @@ const routes: Routes = [
     CheckoutComponent,
     FormComponent,
     AddCityComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeroDetailComponent,
+    BrandComponent
 
   ],
   imports: [
@@ -73,7 +79,7 @@ const routes: Routes = [
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
