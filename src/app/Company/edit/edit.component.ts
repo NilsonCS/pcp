@@ -98,12 +98,17 @@ export class EditComponent implements OnInit {
       ? "El número de celular debe ser de 8 digitos": "";
   }
   
-  
-  onSubmit(put: any) {
-    this.service.updateCompany({ "name":put.name , "direction":put.direction, "phone":put.phone, "email":put.email}).subscribe(data => { alert("La Empresa se Actualizo exitosamente") ;});
+  /** 
+  onSubmit(patch: any) {
+    this.service.updateCompany({ 
+      "name":patch.name ,
+      "direction":patch.direction, 
+      "phone":patch.phone,
+      "email":patch.email})
+      .subscribe(data => { alert("La Empresa se Actualizo exitosamente") ;});
     
   }
-
+*/
 
   /**ESTRUCTURA DE COMPANY PARA EDITAR*/
   datosCompany:any;
@@ -137,25 +142,21 @@ export class EditComponent implements OnInit {
 //        console.log(data);
     })
   }
-/** 
+/** */
+ //nuevo
   company:any;
   actualizarCompany(company:any){
-    this.service.updateCompany(company).subscribe( data =>{
+    this.service.updateCompany(company)
+    .subscribe( data =>{
       this.company = data;
+      alert("Compañia Actualizada Exitosamente");
+      this.router.navigate(["listar"]);
       console.log(data);
     })
   }
-*/
-  /*boton que tiene Metodo para Actualizar
-  actualizarCompany(company:any){
-    this.service.updateCompany(company)
-    .subscribe(data=> {
-      this.company=data;
-      alert("Compañia Actualizada Exitosamente");
-      this.router.navigate(["listar"]);
-    })
-  }
-*/
+
+
+ 
   Listar(){
     this.router.navigate(["listar"]);
   }
