@@ -5,7 +5,7 @@
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
 
-    <form #productTypeForm="ngForm">
+    <form [formGroup]="editarForm" (ngSubmit)="actualizarProducttype(editarForm.value) "#productTypeForm="ngForm">
       <div class="form-group row">
         <label for="typeName" class="col-form-label col-sm-2">Producttype</label>
         <div class="col-sm-6">
@@ -32,10 +32,10 @@
 
 
           <ng-template #elseBlock>
-  <button class="btn btn-primary" role="button" (click)='update(producttype)' [disabled]="!productTypeForm.form.valid">Actualizar</button>
+  <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!productTypeForm.form.valid">Actualizar</button>
 
 </ng-template>
-          <button class="btn btn-primary" role="button" (click)='update(producttype)' >Actualizar</button>
+          <button class="btn btn-primary" role="button" (click)='update()' >Actualizar</button>
 
         </div>
       </div>
