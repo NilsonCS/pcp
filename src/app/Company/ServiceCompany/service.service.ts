@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from "rxjs";
 import { Injectable } from '@angular/core';
 import { Company } from '../model/Company';
@@ -7,7 +7,10 @@ import { Company } from '../model/Company';
   providedIn: 'root'
 })
 export class ServiceService {
+
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http:HttpClient) { }
+
 
   Url:string = 'http://localhost:8080/v1/company';
   getCompany(){
@@ -33,6 +36,8 @@ export class ServiceService {
   }
 
 
-
+  deleteCompany(id:number):Observable<Company>{
+    return this.http.delete<Company>(this.Url +"/"+ id, { headers: this.httpHeaders });
+  }
 
 }
