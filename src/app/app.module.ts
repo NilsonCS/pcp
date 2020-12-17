@@ -26,6 +26,10 @@ import { AddCityComponent } from './city/add-city/add-city.component';
 import { AddProductComponent } from '../app/product/add-product/add-product.component';
 import { RegisterComponent } from './user/register/register.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { AddbComponent } from './brand/addb/addb.component';
+import { EditbComponent } from './brand/editb/editb.component';
+import { ListarbComponent } from './brand/listarb/listarb.component';
+import { ModelbComponent } from './brand/modelb/modelb.component';
 
 
 
@@ -65,7 +69,11 @@ const routes: Routes = [
     FormComponent,
     AddCityComponent,
     RegisterComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    AddbComponent,
+    EditbComponent,
+    ListarbComponent,
+    ModelbComponent
 
   ],
   imports: [
