@@ -5,6 +5,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Observable } from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceService } from '../ServiceCompany/service.service';
+import swal from "sweetalert2";
+
 
 @Component({
   selector: 'app-add',
@@ -97,7 +99,21 @@ export class AddComponent implements OnInit {
 
   
   onSubmit(post: any) {
-    this.service.createCompany({ "name":post.name , "direction":post.direction, "phone":post.phone, "email":post.email}).subscribe(data => { alert("La Empresa se guardo exitosamente") ;});
+    this.service.createCompany({
+       "name":post.name ,
+       "direction":post.direction,
+       "phone":post.phone,
+       "email":post.email})
+       .subscribe(data => { 
+            //mensaje despues de agregar empresa
+            swal.fire(
+              'Agregado!',
+              `La empresa se ha agregado exitosamente.`,
+              'success'
+            );
+            //alert("La Empresa se guardo exitosamente");
+            this.router.navigate(["listar"]);
+        });
     
   }
 

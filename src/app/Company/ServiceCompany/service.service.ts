@@ -40,4 +40,6 @@ export class ServiceService {
     return this.http.delete<Company>(this.Url +"/"+ id, { headers: this.httpHeaders });
   }
 
+
+
 }

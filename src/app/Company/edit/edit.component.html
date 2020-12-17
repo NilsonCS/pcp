@@ -1,20 +1,19 @@
-<p>edit works!</p>
 <div class="container">
     <button (click)="Listar()"  class="btn btn-info"> Volver </button>
 </div>
   
 
 
-<!--prueba fondo de img 
+<!--prueba fondo de img -->
 <div class="container" id="fondo">
   <img [src]="myimage" class="img-fluid" style="position: absolute; right: 0; top: 0; z-index: -100;">
 </div>
--->
+
     <div class="container" id="registration-form">  
       <div class="image"></div>
         <div class="frm">
             <h1>Registro</h1>
-            <form  [formGroup]="editarForm" (ngSubmit)="actualizarCompany(editarForm.value)" class="form">
+            <form  [formGroup]="editarForm" (ngSubmit)="actualizarCompany(editarForm.value)"  class="form">
 
                 <div class="form-group">
                     <label for="name">Nombre:</label>

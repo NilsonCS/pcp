@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceService } from '../ServiceCompany/service.service';
 import { Company } from '../../Company/model/Company';
+import swal from "sweetalert2";
 
 
 @Component({
@@ -98,17 +99,6 @@ export class EditComponent implements OnInit {
       ? "El número de celular debe ser de 8 digitos": "";
   }
   
-  /** 
-  onSubmit(patch: any) {
-    this.service.updateCompany({ 
-      "name":patch.name ,
-      "direction":patch.direction, 
-      "phone":patch.phone,
-      "email":patch.email})
-      .subscribe(data => { alert("La Empresa se Actualizo exitosamente") ;});
-    
-  }
-*/
 
   /**ESTRUCTURA DE COMPANY PARA EDITAR*/
   datosCompany:any;
@@ -136,21 +126,28 @@ export class EditComponent implements OnInit {
         'phone': this.datosCompany.phone,
         'email': this.datosCompany.email
       })   
-//        console.log(this.editarForm.value); 
-//        console.log(data);
+        //console.log(this.editarForm.value); 
+        //console.log(data);
     })
   }
-/** */
- //nuevo
- //guardamoa los datos actualizados
+
+  //guardamoa los datos actualizados
   company:any;
   actualizarCompany(company:any){
     this.service.updateCompany(company)
     .subscribe( data =>{
       this.company = data;
-      alert("Compañia Actualizada Exitosamente");
-      this.router.navigate(["listar"]);
-      console.log(data);
+
+        //mensaje despues de la actualización exitosa
+        swal.fire(
+          'Actualizado!',
+          `La empresa ${company.name} se ha actualizado exitosamente.`,
+          'success'
+        );
+        
+        //alert("Compañia Actualizada Exitosamente");
+        this.router.navigate(["listar"]);
+        console.log(data);
     })
   }
 
@@ -159,5 +156,9 @@ export class EditComponent implements OnInit {
   Listar(){
     this.router.navigate(["listar"]);
   }
+
+   //imagen
+   myimage:string = "assets/images/background.jpg";
+
 
 }
