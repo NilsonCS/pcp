@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Brand} from '../modelb/Brand';
+import {ServiceService} from '../../brand/service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-listarb',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarbComponent implements OnInit {
 
-  constructor() { }
+   brands: any;
+   brand:Brand[];
 
-  ngOnInit(): void {
+  constructor(private service:ServiceService ,private router:Router) {
+    this.brand = [];
   }
 
+  ngOnInit(): void {
+    this.service.getBrand()
+      .subscribe(data =>{
+        this.brands=data;
+      })
+  }
+  // editBrand(id:any) {
+  //   this.router.navigate("editb", id);
+  // }
+    Listar(){
+      this.router.navigate(["listarb"]);
+    }
 }

@@ -1,5 +1,4 @@
-export class Brand {
-
+export class Brand{
   brandId: number;
   name: String;
 
