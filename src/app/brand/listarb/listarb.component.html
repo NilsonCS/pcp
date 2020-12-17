@@ -1,1 +1,41 @@
-<p>listarb works!</p>
+<p></p>
+<p></p>
+<p></p>
+<div class="container">
+<!--  <button (click)="Listar()"  class="btn btn-info"> Lista </button>-->
+<!--  <button (click)="Nuevo()" class="btn btn-info"  style="margin-left: 10px; "> Agregar </button>-->
+</div>
+<p></p>
+<p></p>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Marcas registradas</h3>
+    </div>
+
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr   class="text-center" *ngFor="let brand of brands">
+          <td>{{brand.brandId}}</td>
+          <td>{{brand.name}}</td>
+
+<!--          <td>-->
+<!--            <button (click)="editBrand(brand.brandId)" class="btn btn-warning"> Editar</button>-->
+<!--            <button type="button" (click)="eliminar(brand)" class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>-->
+<!--          </td>-->
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
