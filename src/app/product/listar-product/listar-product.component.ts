@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-listar-product',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private activerouter:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
+
+
+
+  Listar(){
+    this.router.navigate(["listarProdut"]);
+  }
+
+  Nuevo(){
+    this.router.navigate(["addProduct"]);
+  }
+
+  //imagen fondo
+   myimage:string = "assets/images/background.jpg";
+
+
 
 }

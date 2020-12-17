@@ -50,7 +50,11 @@ const routes: Routes = [
   {path: 'producttype/form', component: FormComponent},
   {path: 'producttype/form/:id', component: FormComponent},
   {path: 'add-city', component: AddCityComponent},
-  {path: 'user/register', component: RegisterComponent}
+  {path: 'user/register', component: RegisterComponent},
+
+  {path: 'listarProduct', component: ListarProductComponent},
+  {path: 'editProduct/:id', component: EditProductComponent}
+
 ];
 
 
