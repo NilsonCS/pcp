@@ -28,6 +28,7 @@ import { AddbComponent } from './brand/addb/addb.component';
 import { EditbComponent } from './brand/editb/editb.component';
 import { ListarbComponent } from './brand/listarb/listarb.component';
 import { ListarProductComponent } from './product/listar-product/listar-product.component';
+import { EditProductComponent } from './product/edit-product/edit-product.component';
 
 
 
@@ -74,7 +75,8 @@ const routes: Routes = [
     AddbComponent,
     EditbComponent,
     ListarbComponent,
-    ListarProductComponent
+    ListarProductComponent,
+    EditProductComponent
 
   ],
   imports: [
