@@ -12,9 +12,7 @@ import { AddComponent } from './Company/add/add.component';
 import { EditComponent } from './Company/edit/edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ServiceService } from '../app/Company/ServiceCompany/service.service';
 import { StoreComponent } from './store/store.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { ProductComponent } from './product/product.component';
@@ -42,7 +40,9 @@ const routes: Routes = [
   {path: 'listar', component: ListarComponent},
   {path: 'listarb', component: ListarbComponent},
   {path: 'add', component: AddComponent},
+  {path: 'addb', component: AddbComponent},
   {path: 'edit/:id', component: EditComponent},
+  {path: 'editb/:id', component: EditbComponent},
   {path: 'addProduct', component: AddProductComponent},
   {path: 'cart', component: CartComponent},
   {path: 'list', component: ListComponent},

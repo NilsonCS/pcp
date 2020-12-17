@@ -23,10 +23,15 @@ export class ListarbComponent implements OnInit {
         this.brands=data;
       })
   }
-  // editBrand(id:any) {
-  //   this.router.navigate("editb", id);
-  // }
+  editBrand(id:any) {
+    this.router.navigate(["editb", id]);
+  }
     Listar(){
       this.router.navigate(["listarb"]);
     }
+  Nuevo(){
+    this.router.navigate(["addb"]);
+  }
+
+
 }
