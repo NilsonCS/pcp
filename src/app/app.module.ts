@@ -29,7 +29,6 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { AddbComponent } from './brand/addb/addb.component';
 import { EditbComponent } from './brand/editb/editb.component';
 import { ListarbComponent } from './brand/listarb/listarb.component';
-import { ModelbComponent } from './brand/modelb/modelb.component';
 
 
 
@@ -72,8 +71,7 @@ const routes: Routes = [
     HeroDetailComponent,
     AddbComponent,
     EditbComponent,
-    ListarbComponent,
-    ModelbComponent
+    ListarbComponent
 
   ],
   imports: [
