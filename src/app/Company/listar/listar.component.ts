@@ -71,7 +71,7 @@ export class ListarComponent implements OnInit {
   }
 
 
-  /**ESTRUCTURA DE info*/
+  /**ESTRUCTURA DE info Company*/
   datosCompany:any;
     editarForm = new FormGroup({
     companyId: new FormControl(''),
@@ -85,7 +85,7 @@ export class ListarComponent implements OnInit {
   // y uso del metodo getCompanyId de Service
   infoCompany(id:any){
   //  let companyId = this.activerouter.snapshot.paramMap.get('id');
-    this.service.getCompanyId(id).subscribe(data =>{ 
+    this.service.getCompanyId(id).subscribe(data =>{   
           this.datosCompany = data;
           this.editarForm.setValue({
             'companyId': this.datosCompany.companyId,
@@ -97,6 +97,36 @@ export class ListarComponent implements OnInit {
              console.log(this.editarForm.value); 
              //console.log(data);
     })
+  }
+
+
+
+
+    /**ESTRUCTURA DE info Product*/
+    datosProduct:any;
+    productForm = new FormGroup({
+    productId: new FormControl(''),
+    productName: new FormControl(''),
+    model: new FormControl(''),
+    img: new FormControl(''),
+    unitPrice: new FormControl(''),
+    companyId: new FormControl(''),
+  });
+
+  infoProduct(id:any){
+    this.service.getProductoId(id).subscribe(data =>{   
+        this.datosProduct = data;  
+
+        this.productForm.setValue({
+          'productId': this.datosProduct.productId,
+          'productName': this.datosProduct.productName,
+          'model': this.datosProduct.model,
+          'img': this.datosProduct.img,
+          'unitPrice': this.datosProduct.unitPrice,
+          'companyId': this.datosCompany.companyId,
+        })   
+          console.log(this.productForm.value); 
+      })
   }
 
 
@@ -116,6 +146,9 @@ export class ListarComponent implements OnInit {
 
    //imagen Información
    imgCompany:string = "assets/images/imgCompany.jpg";
+
+   //imagen empresa
+   img:string = "assets/images/img.jpg";
 
 
 

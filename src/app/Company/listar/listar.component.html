@@ -10,7 +10,7 @@
 
 <!--prueba fondo de img -->
 <div class="container" id="fondo">
-    <img [src]="myimage" class="img-fluid" style="position: absolute; right: 0; top: 0; z-index: -100;">
+    <img [src]="myimage" class="img-fluid" class="img-responsive" style="position: absolute; right: 0; top: 0; z-index: -100;">
 </div>
 
 
@@ -23,32 +23,29 @@
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                    <tr  class="text-left">
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Direccion</th>
-                        <th>Telefono</th>
-                        <th>Email</th>
+                        <th>Empresas</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr   class="text-center" *ngFor="let company of companies">
-                        <td>{{company.companyId}}</td>
+                    <tr   class="text-left" *ngFor="let company of companies">
+                        <td>{{company.companyId}} <img [src]="img" height="55px" width="65px"> </td>
                         <td>{{company.name}}</td>
-                        <td>{{company.direction}}</td>
-                        <td>{{company.phone}}</td>
-                        <td>{{company.email}}</td>
+
 
                         <td>
                             <!--IMAGEN LLama a info de Company-->
                             <div class="img">
-                                <img (click)="infoCompany(company.companyId)" [src]="imgInfo"  height="60px" width="70px"
-                                class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm"> 
+                                <img (click)="infoCompany(company.companyId)" [src]="imgInfo"  height="55px" width="65px" 
+                                class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm" class="rounded-circle img-responsive"> 
                                  
                             </div>
                         </td>
                         <td>
-                            <button (click)="editCompany(company.companyId)" class="btn btn-warning"> Editar</button>
+                            <button (click)="infoProduct(company.companyId)" class="btn btn-success"> Productos</button>
+                            <button (click)="editCompany(company.companyId)" class="btn btn-success"> Editar</button>
                             <button type="button" (click)="eliminar(company)" class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>
                         </td>
                     </tr>
@@ -64,10 +61,6 @@
 
 <!--INFO-->
 <!--Modal: Login with Avatar Form-->
-<div class="text-center">
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Launch
-      Modal Contact Form</a>
-  </div>
 
 <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
@@ -82,29 +75,39 @@
       <div class="modal-body mx-3">
            <!--Header-->
             <div class="modal-header">
-                <img [src]="imgCompany"  height="300px" width="300px"  alt="avatar" class="rounded-circle img-responsive">
+                <img [src]="img"  height="300px" width="300px"  alt="avatar" class="rounded-circle img-responsive">
             </div>
-                <!--INICIO-->
+                <!--BODY-->
             <form  [formGroup]="editarForm" class="form"> 
-                <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="form34" >Nombre de la Empresa</label>
-                <input matInput class="form-control" readonly="readonly" formControlName="name">
-                </div>
-
-                <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="form29">Dirección</label>
-                <input matInput class="form-control" readonly="readonly" formControlName="direction">
-                </div>
-
-                <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="form32">Telefono</label>
-                <input matInput class="form-control" readonly="readonly" formControlName="phone">
-                </div>
-
-                <div class="md-form">
-                <label data-error="wrong" data-success="right" for="form8">Correo electrónico</label>
-                <input matInput class="form-control" readonly="readonly" formControlName="email">
-                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <th>
+                            <div class="md-form mb-5">
+                            <label >Nombre de la Empresa</label>
+                            <input matInput class="form-control"  readonly="readonly"  formControlName="name">
+                            </div>
+                     
+                            <div class="md-form mb-5">
+                            <label  >Dirección</label>
+                            <input matInput class="form-control"  readonly="readonly" formControlName="direction">
+                            </div>
+                        </th>
+                    </thead>    
+                    <body>
+                        <th>
+                            <div class="md-form mb-5">
+                            <label  >Telefono</label>
+                            <input matInput class="form-control" style="width : 200px; height:38px ;" readonly="readonly" formControlName="phone">
+                            </div>
+                        </th>    
+                        <th>
+                            <div class="md-form mb-5">
+                            <label >Correo electrónico</label>
+                            <input matInput class="form-control" style="width : 200px; height:38px ;" readonly="readonly" formControlName="email">
+                            </div>
+                        </th>     
+                    </body>       
+                </table>    
             </form>   
       </div>
 

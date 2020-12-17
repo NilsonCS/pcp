@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from "rxjs";
 import { Injectable } from '@angular/core';
 import { Company } from '../model/Company';
+import { Product } from '../../../app/product/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class ServiceService {
 
 
   Url:string = 'http://localhost:8080/v1/company';
+  ProductUrl:string = 'http://localhost:8080/v1/product';
   getCompany(){
   return this.http.get<Company[]>(this.Url);
   }
@@ -26,6 +28,16 @@ export class ServiceService {
   //para capturar la fila seleccinada y mostrar en el formulario
   getCompanyId(id:any):Observable<any>{
     return  this.http.get<Company[]>(this.Url+"/"+id);
+  }
+
+  //Get product Id
+  //para capturar la fila seleccinada y mostrar en el formulario
+  getProductoId(id:any):Observable<any>{
+    return  this.http.get<Product[]>(this.ProductUrl+"/"+id);
+  }
+  //Get Products
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.ProductUrl);
   }
 
   //nuevo
