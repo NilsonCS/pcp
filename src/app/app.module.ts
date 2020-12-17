@@ -26,7 +26,6 @@ import { AddCityComponent } from './city/add-city/add-city.component';
 import { AddProductComponent } from '../app/product/add-product/add-product.component';
 import { RegisterComponent } from './user/register/register.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { BrandComponent } from './brand/brand.component';
 
 
 
@@ -43,7 +42,7 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'list', component: ListComponent},
   {path: 'producttype/form', component: FormComponent},
-  {path: 'producttype/form/:productyTypeId', component: FormComponent},
+  {path: 'producttype/form/:id', component: FormComponent},
   {path: 'add-city', component: AddCityComponent},
   {path: 'user/register', component: RegisterComponent}
 ];
@@ -66,8 +65,7 @@ const routes: Routes = [
     FormComponent,
     AddCityComponent,
     RegisterComponent,
-    HeroDetailComponent,
-    BrandComponent
+    HeroDetailComponent
 
   ],
   imports: [

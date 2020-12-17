@@ -16,6 +16,9 @@ export class FormComponent implements OnInit {
   private locator = (p: Producttype, productTypeId: number) => p.productTypeId === productTypeId;
 
 
+  public formGroup: any;
+
+
   // @ts-ignore
  // producttype: Producttype = new Producttype();
   producttypes: any;
@@ -40,6 +43,9 @@ export class FormComponent implements OnInit {
           Swal.fire('Nuevo tipo de producto', `El tipo de producto  ${producttype.typeName} ha sido creado con éxito`, 'success');
 
         });
+  }
+  get typeName() {
+    return this.formGroup.get("typeName") as FormControl;
   }
 
 
