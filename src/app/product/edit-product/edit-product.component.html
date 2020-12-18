@@ -1,1 +1,41 @@
-<p>edit-product works!</p>
+<div class="container">
+    <button (click)="Listar()"  class="btn btn-info"> Volver </button>
+</div>
+  
+
+
+<!--prueba fondo de img -->
+<div class="container" id="fondo">
+  <img [src]="myimage" class="img-fluid"  style="position: absolute; right: 0; top: 0; z-index: -100;">
+</div>
+
+    <div class="container" id="registration-form">  
+      <div class="image"></div>
+        <div class="frm">
+            <h1>Registro</h1>
+            <form  [formGroup]="productForm" (ngSubmit)="actualizarProducto(productForm.value)"  class="form">
+
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input matInput class="form-control" placeholder="Nombre" formControlName="productName">   
+                </div>
+
+                <div class="form-group">
+                    <label for="direction">Modelo:</label>
+                    <textarea matInput class="form-control" placeholder="Dirección de la empresa" formControlName="model"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Precio:</label>
+                    <input matInput class="form-control" placeholder="Telefono" formControlName="unitPrice">   
+                </div>
+
+             
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg">Actualizar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>

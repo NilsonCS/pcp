@@ -5,6 +5,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Observable } from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../product/product.service';
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-product',
@@ -119,18 +120,39 @@ export class AddProductComponent implements OnInit {
   }
   
   onSubmit(post: any) {
-    this.service.createProduct({ "productName":post.productName , "model":post.model, "productDescription":post.productDescription,
-    "stock":post.stock, "weight":post.weight,"unitPrice":post.unitPrice,"currency":post.currency,"img":post.img,
-    "companyId":2, "productTypeId":1, "cityId":1  ,"brandId":1})
-    .subscribe(data => { alert("El producto se guardo exitosamente") ;});
+    this.service.createProduct({
+        "productName":post.productName ,
+        "model":post.model,
+        "productDescription":post.productDescription,
+        "stock":post.stock,
+        "weight":5,
+        "unitPrice":post.unitPrice,
+        "currency":1,
+        "img":post.img,
+        "companyId":2,
+        "productTypeId":1,
+        "cityId":1 ,
+        "brandId":1})
+    .subscribe(data => { 
+           //mensaje despues de agregar empresa
+           swal.fire(
+            'Agregado!',
+            `El Producto se ha agregado exitosamente.`,
+            'success'
+          );
+          this.router.navigate(["listarPoduct"]);
+       ;});
   }
 
 
 
-  ListProduct(){
-    this.router.navigate(["store"]);
+  Listar(){
+    this.router.navigate(["listarProduct"]);
   }
 
+
+  //imagen
+  myimage:string = "assets/images/desk.jpg";
 
 
 

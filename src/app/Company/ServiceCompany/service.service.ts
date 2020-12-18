@@ -30,15 +30,7 @@ export class ServiceService {
     return  this.http.get<Company[]>(this.Url+"/"+id);
   }
 
-  //Get product Id
-  //para capturar la fila seleccinada y mostrar en el formulario
-  getProductoId(id:any):Observable<any>{
-    return  this.http.get<Product[]>(this.ProductUrl+"/"+id);
-  }
-  //Get Products
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.ProductUrl);
-  }
+
 
   //nuevo
    //update Company 

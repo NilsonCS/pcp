@@ -14,3 +14,106 @@
 <div class="container" id="fondo">
     <img [src]="myimage" class="img-fluid" class="img-responsive" style="position: absolute; right: 0; top: 0; z-index: -100;">
 </div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Productos</h3>     
+        </div>
+
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr  class="text-left">
+                        <th>Id</th>
+                        <th>Productos</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr   class="text-left" *ngFor="let product of products">
+                        <td>{{product.productId}} <img [src]="img" height="55px" width="65px"> </td>
+                        <td>{{product.productName}}</td>
+
+
+                        <td>
+                            <!--IMAGEN LLama a info de PRODUCT-->
+                            <div class="img">
+                                <img (click) = "infoProduct(product.productId)" [src]="imgInfo"  height="55px" width="65px" 
+                                class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm" class="rounded-circle img-responsive"> 
+                                 
+                            </div>
+                        </td>
+                        <td>
+                            <button (click) = "editProduct(product.productId)" class="btn btn-success"> Editar</button>
+                            <button (click)="eliminar(product)" type="button"  class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+
+        </div>    
+
+    </div>
+</div>
+
+
+
+<!--INFO-->
+<!--Modal: Login with Avatar Form-->
+
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Información de la Empresa</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+           <!--Header-->
+            <div class="modal-header" id="img">
+                <img mat-card-image [src]="imgProduct" height="300px" width="300px"   alt="avatar" class="rounded-circle img-responsive">
+            </div>
+                <!--BODY -->
+            <form  [formGroup]="productForm"  class="form"> 
+                <table class="table table-hover">
+                    <thead>
+                        <th>
+                            <div class="md-form mb-5">
+                            <label >Nombre del Producto</label>
+                            <input matInput class="form-control"  readonly="readonly"  formControlName="productName">
+                            </div>
+                     
+                            <div class="md-form mb-5">
+                            <label  >Modelo</label>
+                            <input matInput class="form-control"  readonly="readonly" formControlName="model">
+                            </div>
+                        </th>
+                    </thead>    
+                    <body>
+                        <!--
+                        <th>
+                            <div class="md-form mb-5">
+                            <label  >Imagen</label>
+                            <input matInput class="form-control" style="width : 200px; height:38px ;" readonly="readonly" formControlName="img">
+                            </div>
+                        </th>    
+                        -->
+                        <th>
+                            <div class="md-form mb-5">
+                            <label >Precio</label>
+                            <input matInput class="form-control" style="width : 200px; height:38px ;" readonly="readonly" formControlName="unitPrice">
+                            </div>
+                        </th>     
+                    </body>       
+                </table>    
+            </form>   
+            
+      </div>
+
+    </div>
+  </div>
+</div>
