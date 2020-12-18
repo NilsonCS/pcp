@@ -13,7 +13,7 @@
          <td>{{ producttype.productTypeId}}</td>
          <td align="center">{{ producttype.typeName}}</td>
          <td>
-           <button type="button" name="editar" [routerLink]="['/producttype/form/', producttype.productTypeId]" class="btn btn-primary btn-sm">editar</button>
+           <button type="button" name="editar"(click)="editProducttype(producttype.productTypeId)"  class="btn btn-primary btn-sm">editar</button>
          </td>
          <td>
            <button type="button" name="eliminar" (click)='delete(producttype)' class="btn btn-danger btn-sm">eliminar</button>

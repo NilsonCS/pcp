@@ -5,18 +5,15 @@
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
 
-    <form #productTypeForm="ngForm">
+    <form  [formGroup]="editarForm" (ngSubmit)="actualizarProducttype(editarForm.value)">
       <div class="form-group row">
-        <label for="typeName" class="col-form-label col-sm-2">Producttype</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="producttype.typeName" name="nombre" #typeName="ngModel"> <!-- required minlength="4" -->
-          <div class="alert alert-danger" *ngIf="typeName.invalid && (typeName.dirty || typeName.touched)">
-            <div *ngIf="typeName.formDirective.ValidationError.minlength(4)">
-              Nombre es requerido
-            </div>
-            <div *ngIf="typeName">
-              Nombre debe tener al menos 4 caracteres
-            </div>
+        <label for="typeName" class="col-form-label col-sm-2">Tipos de productos</label>
+        <div  class="form-group" class="col-sm-6">
+          <input matInput class="form-control" formControlName="typeName"> <!-- required minlength="4" -->
+          <div class="alert alert-danger">
+            <mat-error  >
+              {{ titleAlert }}
+            </mat-error>
           </div>
         </div>
       </div>
@@ -28,14 +25,14 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!producttype.productTypeId else elseBlock" [disabled]="!productTypeForm.form.valid">Crear</button>
+          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!producttype.productTypeId else elseBlock" >Crear</button>
 
 
           <ng-template #elseBlock>
-  <button class="btn btn-primary" role="button" (click)='update(producttype)' [disabled]="!productTypeForm.form.valid">Actualizar</button>
+  <button class="btn btn-primary" role="button"  >Actualizar</button>
 
 </ng-template>
-          <button class="btn btn-primary" role="button" (click)='update(producttype)' >Actualizar</button>
+          <button type="submit" class="btn btn-primary" role="button" >Actualizar</button>
 
         </div>
       </div>
