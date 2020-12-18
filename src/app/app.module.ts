@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import { ProducttypeComponent } from './producttype/producttype.component';
 import {RouterModule,Routes} from "@angular/router";
 import { ListarComponent } from './Company/listar/listar.component';
 import { AddComponent } from './Company/add/add.component';
@@ -19,14 +18,16 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { ListComponent } from './city/list/list.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { FormComponent } from './producttype/form.component';
 import { AddCityComponent } from './city/add-city/add-city.component';
 import { AddProductComponent } from '../app/product/add-product/add-product.component';
 import { RegisterComponent } from './user/register/register.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { AddbComponent } from './brand/addb/addb.component';
+
 import { EditbComponent } from './brand/editb/editb.component';
+import { EditptComponent } from './producttype/editpt/editpt.component';
 import { ListarbComponent } from './brand/listarb/listarb.component';
+import { ListarptComponent } from './producttype/listarpt/listarpt.component';
 import { ListarProductComponent } from './product/listar-product/listar-product.component';
 import { EditProductComponent } from './product/edit-product/edit-product.component';
 
@@ -36,22 +37,20 @@ import { EditProductComponent } from './product/edit-product/edit-product.compon
 const routes: Routes = [
   {path: '', redirectTo: '/store', pathMatch: 'full'},
   { path: "", redirectTo: "/table", pathMatch: "full" },
-  {path: 'producttype', component: ProducttypeComponent},
   {path: 'store', component: StoreComponent},
   {path: 'listar', component: ListarComponent},
   {path: 'listarb', component: ListarbComponent},
+  {path: 'listarpt', component: ListarptComponent},
   {path: 'add', component: AddComponent},
   {path: 'addb', component: AddbComponent},
   {path: 'edit/:id', component: EditComponent},
   {path: 'editb/:id', component: EditbComponent},
+  {path: 'editpt/:id', component: EditptComponent},
   {path: 'addProduct', component: AddProductComponent},
   {path: 'cart', component: CartComponent},
   {path: 'list', component: ListComponent},
-  {path: 'producttype/form', component: FormComponent},
-  {path: 'producttype/form/:id', component: FormComponent},
   {path: 'add-city', component: AddCityComponent},
   {path: 'user/register', component: RegisterComponent},
-
   {path: 'listarProduct', component: ListarProductComponent},
   {path: 'editProduct/:id', component: EditProductComponent}
 
@@ -62,7 +61,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProducttypeComponent,
     ListarComponent,
     AddComponent,
     EditComponent,
@@ -72,13 +70,14 @@ const routes: Routes = [
     CartComponent,
     ListComponent,
     CheckoutComponent,
-    FormComponent,
     AddCityComponent,
     RegisterComponent,
     HeroDetailComponent,
     AddbComponent,
     EditbComponent,
+    EditptComponent,
     ListarbComponent,
+    ListarptComponent,
     ListarProductComponent,
     EditProductComponent
 
