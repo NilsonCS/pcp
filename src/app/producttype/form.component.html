@@ -5,14 +5,13 @@
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
 
-    <form [formGroup]="editarForm" (ngSubmit)="actualizarProducttype(editarForm.value) "#productTypeForm="ngForm">
-      <div class="form-group ">
+    <form #productTypeForm="ngForm">
+      <div class="form-group row">
         <label for="typeName" class="col-form-label col-sm-2">Producttype</label>
         <div class="col-sm-6">
-<!--          <input type="text" class="form-control" [(ngModel)]="producttype.typeName" name="nombre" #typeName="ngModel"> &lt;!&ndash; required minlength="4" &ndash;&gt;-->
-          <input type="text" class="form-control" [(ngModel)]="producttype.typeName" formControlName="typeName"  typeName="typeName" > <!-- required minlength="4" -->
+          <input type="text" class="form-control" [(ngModel)]="producttype.typeName" name="nombre" #typeName="ngModel"> <!-- required minlength="4" -->
           <div class="alert alert-danger" *ngIf="typeName.invalid && (typeName.dirty || typeName.touched)">
-            <div *ngIf="typeName.valid">
+            <div *ngIf="typeName.formDirective.ValidationError.minlength(4)">
               Nombre es requerido
             </div>
             <div *ngIf="typeName">
@@ -33,10 +32,10 @@
 
 
           <ng-template #elseBlock>
-  <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!productTypeForm.form.valid">Actualizar</button>
+  <button class="btn btn-primary" role="button" (click)='update(producttype)' [disabled]="!productTypeForm.form.valid">Actualizar</button>
 
 </ng-template>
-          <button class="btn btn-primary" role="button" (click)='update()' >Actualizar</button>
+          <button class="btn btn-primary" role="button" (click)='update(producttype)' >Actualizar</button>
 
         </div>
       </div>

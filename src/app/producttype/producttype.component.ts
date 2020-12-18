@@ -5,7 +5,6 @@ import {map} from "rxjs/operators";
 import {Producttype} from "./producttype";
 import {ProducttypeService} from "./producttype.service";
 import swal from "sweetalert2";
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-producttype',
@@ -25,7 +24,7 @@ export class ProducttypeComponent implements OnInit {
   //   {productTypeId:1,typeName:"MB"}
   // ];
 
-constructor(private producttypeService: ProducttypeService, private router:Router) {
+constructor(private producttypeService: ProducttypeService ) {
   this.producttypes = [];
 }
 
@@ -36,10 +35,6 @@ constructor(private producttypeService: ProducttypeService, private router:Route
       {this.producttypes = data;
       });
 
-  }
-
-  editProducttype(id:any){
-    this.router.navigate(['producttype/form',id]);
   }
 
   delete(productType: Producttype): void {

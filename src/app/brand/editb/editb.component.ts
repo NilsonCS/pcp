@@ -63,9 +63,6 @@ export class EditbComponent implements OnInit {
 
   Edit(){
     let brandId = this.activerouter.snapshot.paramMap.get('id');
-    console.log(brandId);
-    console.log(brandId);
-    console.log(brandId);
     this.service.getBrandId(brandId).subscribe(data => {
 
       this.datosBrand = data;
@@ -73,7 +70,6 @@ export class EditbComponent implements OnInit {
         'brandId': brandId,
         'name': this.datosBrand.name,
       });
-      console.log(data);
 
     });
   }
