@@ -29,6 +29,10 @@ export class EditProductComponent implements OnInit {
        model: new FormControl(''),
        img: new FormControl(''),
        unitPrice: new FormControl(''),
+       productDescription: new FormControl(''),
+       stock: new FormControl(''),
+
+
    });
  
    Edit(){
@@ -42,6 +46,10 @@ export class EditProductComponent implements OnInit {
            'model': this.datosProduct.model,
            'img': this.datosProduct.img,
            'unitPrice': this.datosProduct.unitPrice,
+           'productDescription': this.datosProduct.productDescription,
+           'stock': this.datosProduct.stock,
+
+
          })   
              console.log(this.productForm.value); 
          //  console.log(data); 
