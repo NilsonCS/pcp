@@ -5,6 +5,7 @@ import {Producttype} from './producttype';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {Brand} from '../brand/modelb/Brand';
 
 @Injectable({
   providedIn: 'root'
@@ -62,10 +63,9 @@ getProducttype(){
     );
   }
 
-   update(productType: Producttype): Observable<Producttype> {
-
-     return this.http.patch<Producttype>(
-       `${this.urlEndPoint}/${productType.productTypeId}`, productType);
+   update(productType: any): Observable<any> {
+     return this.http.patch<any>(
+       this.urlEndPoint, productType);
 
   //  return this.http.patch<Producttype>(`${this.urlEndPoint}${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
    // return this.http.patch<any>(`${this.urlEndPoint2}/${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
@@ -89,6 +89,8 @@ getProducttype(){
       })
     );
   }
-
+  getProductTypeId(id:any):Observable<any>{
+    return this.http.get<Producttype[]>(this.urlEndPoint+"/"+id);
+  }
 
 }

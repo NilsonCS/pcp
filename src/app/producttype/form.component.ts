@@ -6,6 +6,7 @@ import swal from 'sweetalert2';
 import Swal from 'sweetalert2';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -14,21 +15,34 @@ import {catchError} from 'rxjs/operators';
 export class FormComponent implements OnInit {
   private locator = (p: Producttype, productTypeId: number) => p.productTypeId === productTypeId;
 
-
+  public formGroup: any;
+  titleAlert = 'This field is required';
+  post: any = '';
+  total: number = 0;
   // @ts-ignore
   producttype: Producttype = new Producttype();
   titulo = 'Crear nuevo tipo de producto';
  // errores: string[];
   constructor(private productTypeService: ProducttypeService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,private formBuilder: FormBuilder,
+  private activerouter: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.cargarProducttype();
+    this.createForm();
+    this.update();
   }
 
+  createForm() {
+    this.formGroup = this.formBuilder.group({
+      name: [null, Validators.required]
+    });
+  }
 
+  get typeName() {
+    return this.formGroup.get('typeName') as FormControl;
+  }
   public create(): void {
     this.productTypeService.create(this.producttype)
       .subscribe(
@@ -39,34 +53,53 @@ export class FormComponent implements OnInit {
         });
   }
 
-  cargarProducttype(): void {
-    this.activatedRoute.params.subscribe(
-      params => {
-      const productTypeId = params['productTypeId'];
-      console.log(productTypeId);
+  // cargarProducttype(): void {
+  //   this.activatedRoute.params.subscribe(
+  //     params => {
+  //     const productTypeId = params['productTypeId'];
+  //     console.log(productTypeId);
+  //
+  //     if (productTypeId) {
+  //       this.productTypeService.getProductTypeU(productTypeId).subscribe((productType) => this.producttype = productType);
+  //       console.log(productTypeId);
+  //
+  //     }
+  //     console.log(productTypeId);
+  //   });
+  // }
+  datosProductType: any;
 
-      if (productTypeId) {
-        this.productTypeService.getProductTypeU(productTypeId).subscribe((productType) => this.producttype = productType);
-        console.log(productTypeId);
+  editarForm = new FormGroup({
+    productTypeId: new FormControl(''),
+    typeName: new FormControl(''),
+  });
 
-      }
-      console.log(productTypeId);
+  update() {
+    let productTypeId = this.activerouter.snapshot.paramMap.get('id');
+    this.productTypeService.getProductTypeId(productTypeId).subscribe(data => {
+
+      this.datosProductType = data;
+      this.editarForm.setValue({
+        'productTypeId': productTypeId,
+        'typeName': this.datosProductType.typeName,
+      });
+
     });
   }
-
-  update(productType: Producttype) {
-    this.productTypeService.update(productType)
-      .subscribe(
-        p => {
-          this.router.navigate(['/producttype']);
-        //  swal.fire('Tipo de producto Actualizado', `${json.mensaje}: ${json.producttype.typeName}`, 'success');
-        },
-        err => {
-        //  this.errores = err.error.errors as string[];
-          console.error('Código del error desde el backend: ' + err.status);
-          console.error(err.error.errors);
-        }
-      );
+  producType: any;
+  actualizarProducttype(producttype: any){
+    this.productTypeService.update(producttype)
+      .subscribe( data => {
+        this.producttype = data;
+        swal.fire(
+          'Actualizado!',
+          `El producto ${producttype.typeName} se ha actualizado exitosamente.`,
+          'success'
+        );
+        this.router.navigate(['producttype']);
+        console.log(data);
+        console.log(data);
+      });
   }
 }
 
