@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {ServiceService} from '../../brand/service.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-editb',
@@ -14,14 +15,13 @@ export class EditbComponent implements OnInit {
   public formGroup: any;
   titleAlert = 'This field is required';
   post: any = '';
-  total = 0;
+  total: number = 0;
 
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog, public service: ServiceService, private router: Router, private activerouter: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.createForm();
-    this.setChangeValidate();
     this.Edit();
   }
   createForm() {
@@ -70,7 +70,6 @@ export class EditbComponent implements OnInit {
         'brandId': brandId,
         'name': this.datosBrand.name,
       });
-      console.log(data);
 
     });
   }
@@ -79,7 +78,11 @@ export class EditbComponent implements OnInit {
     this.service.updateBrand(brand)
       .subscribe( data => {
         this.brand = data;
-        alert('Compañia Actualizada Exitosamente');
+        swal.fire(
+          'Actualizado!',
+          `La empresa ${brand.name} se ha actualizado exitosamente.`,
+          'success'
+        );
         this.router.navigate(['listarb']);
         console.log(data);
       });

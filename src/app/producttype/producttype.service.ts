@@ -5,7 +5,6 @@ import {Producttype} from './producttype';
 import {catchError, map} from 'rxjs/operators';
 import swal from 'sweetalert2';
 import {Router} from '@angular/router';
-//import any = jasmine.any;
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +39,6 @@ getProducttype(){
     );
   }
 
-  getProducttypeId(id:any):Observable<any>{
-    return this.http.get<Producttype[]>(this.urlEndPoint+"/"+id);
-  }
-
   getProductTypee(productTypeId: any): Observable<Producttype>{
     return this.http.get<Producttype>(`${this.urlEndPoint}/${productTypeId}`).pipe(
       catchError(e => {
@@ -67,11 +62,10 @@ getProducttype(){
     );
   }
 
-   update(productType: Producttype): Observable<any> {
+   update(productType: Producttype): Observable<Producttype> {
 
-    // return this.http.patch<any>(
-       //`${this.urlEndPoint}/${productType.productTypeId}`, productType);
-     return this.http.patch<any>(this.urlEndPoint, productType);
+     return this.http.patch<Producttype>(
+       `${this.urlEndPoint}/${productType.productTypeId}`, productType);
 
   //  return this.http.patch<Producttype>(`${this.urlEndPoint}${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
    // return this.http.patch<any>(`${this.urlEndPoint2}/${productType.productTypeId}`, productType, { headers: this.httpHeaders }).pipe(
