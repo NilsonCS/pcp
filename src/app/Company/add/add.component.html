@@ -22,7 +22,7 @@
                     <input matInput class="form-control" placeholder="Nombre de la Empresa" formControlName="name">
                     
                     <mat-error *ngIf="!name.valid && name.touched">
-                      {{ titleAlert }}
+                      {{ titleAlertName }}
                     </mat-error>     
                 </div>
 
@@ -31,17 +31,20 @@
                     <textarea matInput class="form-control" placeholder="Dirección de la empresa" formControlName="direction"></textarea>
                    
                     <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
-                      Este campo es requerido, la dirección debe estar comprendida entre 10 y 100 caracteres.
+                      {{ titleAlertDirection }}
                     </mat-error>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Telefono:</label>
-                    <input matInput class="form-control" placeholder="Telefono" formControlName="phone">
+                    <!--(keypress)="keyPress($event)" required type="text" //valida que solo podamos escribir numeros-->
+                    <input matInput class="form-control" (keypress)="keyPress($event)" required type="text"   placeholder="Telefono" formControlName="phone">
 
                     <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
-                      El número de celular debe ser de 8 digitos
+                      {{ titleAlertPhone }}
                     </mat-error>   
+
+                   
                 </div>
 
                 <div class="form-group">
@@ -49,7 +52,7 @@
                     <input matInput  class="form-control" placeholder="Correo Electrónico" formControlName="email">
 
                     <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
-                      {{ getErrorEmail() }}
+                      {{ titleAlertEmail }}
                     </mat-error>
                 </div>
              

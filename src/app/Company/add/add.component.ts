@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceService } from '../ServiceCompany/service.service';
 import swal from "sweetalert2";
+import { getNumberOfCurrencyDigits } from '@angular/common';
 
 
 @Component({
@@ -16,7 +17,12 @@ import swal from "sweetalert2";
 export class AddComponent implements OnInit {
 
   public formGroup: any;
-  titleAlert: string = "Este campo es requerido.";
+  titleAlert: string = "";
+  titleAlertName: string = "";
+  titleAlertDirection: string = "";
+  titleAlertPhone: string = "";
+  titleAlertEmail: string = "";
+
   post: any = "";
   total: number = 0;
   
@@ -24,47 +30,78 @@ export class AddComponent implements OnInit {
   
   ngOnInit() {
     this.createForm();
-    this.setChangeValidate();
-    
+  //  this.setChangeValidate();
+    this.validateName();
+    this.validateDirection();
+    this.validatePhone();
+    this.validateEmail();
+
   }
  
   createForm() {
     this.formGroup = this.formBuilder.group({
-      email: [
-        null,
-        [Validators.required, Validators.email],
-        this.checkInUseEmail
-      ],
-      name: [null, Validators.required],
-      phone: [
-        null,
-        [Validators.required, Validators.minLength(8), Validators.maxLength(8)]
-       ],
-      direction: [
-        null,
-        [Validators.required, Validators.minLength(10), Validators.maxLength(100)]
-      ],
-      validate: ""
+
+        email:[null, [Validators.required, Validators.email], this.checkInUseEmail ],
+        name: [null, Validators.required],
+        phone:[null, [Validators.required,Validators.pattern("^[0-9]*$"), Validators.minLength(8), Validators.maxLength(8)] ],
+        direction:[null, [Validators.required, Validators.minLength(10), Validators.maxLength(100)] ],
+        validate: ""
+
     });
   }
   
   setChangeValidate() {
     this.formGroup.get("validate").valueChanges.subscribe((validate: any) => {
-      if (validate == "1") {
-        this.formGroup
-          .get("name")
-          .setValidators([Validators.required, Validators.minLength(5)]);
-        this.titleAlert = "You need to specify at least 5 characters";
-      } else {
-        this.formGroup.get("name").setValidators(Validators.required);
-      }
-      this.formGroup.get("name").updateValueAndValidity();
+        if (validate == "1") {
+          this.formGroup
+            .get("name")
+            .setValidators([Validators.required, Validators.minLength(5)]);
+          this.titleAlert = "You need to specify at least 5 characters";
+        } else {
+          this.formGroup.get("name").setValidators(Validators.required);
+        }
+        this.formGroup.get("name").updateValueAndValidity();
     });
   }
   
   get name() {
     return this.formGroup.get("name") as FormControl;
   }
+
+  //nuevo name
+  public validateName(): any {
+    if (this.formGroup.value.name === null ) {
+        this.titleAlertName = "El campo Nombre no puede estar esta vacio.";
+      }
+  }
+  //nuevo direction
+  public validateDirection(): any {
+    if (this.formGroup.value.direction === null ) {
+        this.titleAlertDirection="Este campo es requerido, la dirección debe estar comprendida entre 10 y 100 caracteres.";
+      }
+  }
+  //nuevo phone
+  public validatePhone(): any {
+    if (this.formGroup.value.phone === null ) {
+        this.titleAlertPhone = "El campo Telefóno no puede estar esta vacio y debe tener de 8 digitos.";
+      }
+  }
+  //only number will be add
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  //nuevo email
+  public validateEmail(): any {
+    if (this.formGroup.value.email === null ) {
+        this.titleAlertEmail = "Este campo no puede estar esta vacio y debe cumplir con el formato __@__mail.com";
+      }
+  }
+    
   
 
   checkInUseEmail(control:any) {
