@@ -19,9 +19,9 @@
 
                 <div class="form-group">
                     <label for="name">Nombre:</label>
-                    <input matInput class="form-control" placeholder="Nombre de la Empresa" formControlName="name">
+                    <input matInput class="form-control"   placeholder="Nombre de la Empresa" formControlName="name">
                     
-                    <mat-error *ngIf="!name.valid && name.touched">
+                    <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
                       {{ titleAlertName }}
                     </mat-error>     
                 </div>
