@@ -30,6 +30,8 @@ import { ListarbComponent } from './brand/listarb/listarb.component';
 import { ListarptComponent } from './producttype/listarpt/listarpt.component';
 import { ListarProductComponent } from './product/listar-product/listar-product.component';
 import { EditProductComponent } from './product/edit-product/edit-product.component';
+import { AddStoreComponent } from './newStore/add-store/add-store.component';
+import { ListStoreComponent } from './newStore/list-store/list-store.component';
 
 
 
@@ -79,7 +81,9 @@ const routes: Routes = [
     ListarbComponent,
     ListarptComponent,
     ListarProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    AddStoreComponent,
+    ListStoreComponent
 
   ],
   imports: [
