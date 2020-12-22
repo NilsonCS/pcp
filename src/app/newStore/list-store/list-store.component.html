@@ -1,8 +1,21 @@
 <p>list-store works!</p>
 
-<div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products" >
-    {{product.productName}}
-    <mat-card-header>
-        <mat-card-title>{{product.productName}}</mat-card-title>
-    </mat-card-header>
-</div>
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px grid" class="contenedor" fxLayoutAlign="flex-start">
+    <div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products" >
+        
+        <mat-card class="prod" >
+
+            <mat-card-header>
+                <mat-card-title>{{product.productName}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="getImgUrl(product.img)" alt="Fotografia de muestra" class="image" (click)="productInfo(product)">
+            
+            <mat-card-content align="center">
+                <h3> {{product.model}} </h3>
+                <h2> {{product.unitPrice | currency}} </h2>
+            </mat-card-content>
+              
+        </mat-card>
+
+    </div>
+</div>    
