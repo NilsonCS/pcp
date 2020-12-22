@@ -1,1 +1,8 @@
 <p>list-store works!</p>
+
+<div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products" >
+    {{product.productName}}
+    <mat-card-header>
+        <mat-card-title>{{product.productName}}</mat-card-title>
+    </mat-card-header>
+</div>

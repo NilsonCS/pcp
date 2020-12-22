@@ -54,7 +54,12 @@ const routes: Routes = [
   {path: 'add-city', component: AddCityComponent},
   {path: 'user/register', component: RegisterComponent},
   {path: 'listarProduct', component: ListarProductComponent},
-  {path: 'editProduct/:id', component: EditProductComponent}
+  {path: 'editProduct/:id', component: EditProductComponent},
+  //nuevo Carrito
+  {path: 'addStore', component: AddStoreComponent},
+  {path: 'listarStore', component: ListStoreComponent}
+
+
 
 ];
 

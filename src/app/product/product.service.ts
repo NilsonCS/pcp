@@ -11,6 +11,7 @@ export class ProductService {
   last: any ;
   constructor(private http: HttpClient) { }
 
+  //conexión con el backend, llamando los productos
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
   }
