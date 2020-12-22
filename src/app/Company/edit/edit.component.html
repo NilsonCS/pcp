@@ -13,50 +13,51 @@
       <div class="image"></div>
         <div class="frm">
             <h1>Registro</h1>
-            <form  [formGroup]="editarForm" (ngSubmit)="actualizarCompany(editarForm.value)"  class="form">
 
-                <div class="form-group">
-                    <label for="name">Nombre:</label>
-                    <input matInput class="form-control" placeholder="Nombre de la Empresa" formControlName="name">
+              <form  [formGroup]="editarForm" (ngSubmit)="actualizarCompany(editarForm.value)"  class="form">
+
+                  <div class="form-group">
+                      <label for="name">Nombre:</label>
+                      <input matInput class="form-control" placeholder="Nombre de la Empresa" formControlName="name">
+                      
+                      <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+                        {{ titleAlertName }}
+                      </mat-error>     
+                  </div>
+
+                  <div class="form-group">
+                      <label for="direction">Dirección:</label>
+                      <textarea matInput class="form-control" placeholder="Dirección de la empresa" formControlName="direction"></textarea>
                     
-                    <mat-error *ngIf="!name.valid && name.touched">
-                      {{ titleAlert }}
-                    </mat-error>     
-                </div>
+                      <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
+                        {{ titleAlertDirection }}
+                      </mat-error>
+                  </div>
 
-                <div class="form-group">
-                    <label for="direction">Dirección:</label>
-                    <textarea matInput class="form-control" placeholder="Dirección de la empresa" formControlName="direction"></textarea>
-                   
-                    <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
-                      Este campo es requerido, la dirección debe estar comprendida entre 10 y 100 caracteres.
-                    </mat-error>
-                </div>
+                  <div class="form-group">
+                      <label for="phone">Telefono:</label>
+                      <input matInput class="form-control" (keypress)="keyPress($event)" required type="text" placeholder="Telefono" formControlName="phone">
 
-                <div class="form-group">
-                    <label for="phone">Telefono:</label>
-                    <input matInput class="form-control" placeholder="Telefono" formControlName="phone">
+                      <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
+                        {{ titleAlertPhone }}
+                      </mat-error>    
+                  </div>
 
-                    <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
-                      El número de celular debe ser de 8 digitos
-                    </mat-error>   
-                </div>
+                  <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input matInput  class="form-control" placeholder="Correo Electrónico" formControlName="email">
 
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input matInput  class="form-control" placeholder="Correo Electrónico" formControlName="email">
+                      <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+                        {{ titleAlertEmail }}
+                      </mat-error>
+                  </div>
+              
 
-                    <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
-                      {{ getErrorEmail() }}
-                    </mat-error>
-                </div>
-             
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-success btn-lg">Actualizar</button>
+                  </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-lg">Actualizar</button>
-                </div>
-
-            </form>
+              </form>
         </div>
     </div>
 

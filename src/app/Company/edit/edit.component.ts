@@ -21,6 +21,12 @@ export class EditComponent implements OnInit {
   post: any = "";
   total: number = 0;
 
+  titleAlertName: string = "";
+  titleAlertDirection: string = "";
+  titleAlertPhone: string = "";
+  titleAlertEmail: string = "";
+
+
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog, public service:ServiceService, private router:Router, private activerouter:ActivatedRoute) {
   }
   
@@ -34,20 +40,10 @@ export class EditComponent implements OnInit {
  
   createForm() {
     this.formGroup = this.formBuilder.group({
-      email: [
-        null,
-        [Validators.required, Validators.email],
-        this.checkInUseEmail
-      ],
-      name: [null, Validators.required],
-      phone: [
-        null,
-        [Validators.required, Validators.minLength(8), Validators.maxLength(8)]
-       ],
-      direction: [
-        null,
-        [Validators.required, Validators.minLength(10), Validators.maxLength(100)]
-      ],
+      email:[null, [Validators.required, Validators.email] ],
+      name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(20) ] ],
+      phone:[null, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(8), Validators.maxLength(8)] ],
+      direction:[null,[Validators.required, this.validarEspacios, Validators.minLength(10), Validators.maxLength(100)] ],
       validate: ""
     });
   }
@@ -98,6 +94,49 @@ export class EditComponent implements OnInit {
     return this.formGroup.get("phone").hasError("required")
       ? "El número de celular debe ser de 8 digitos": "";
   }
+
+  //VALIDACIONES
+  public validarEspacios(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+
+ 
+  //nuevo name
+  public validateName(): any {
+    if (this.formGroup.value.name === null ) {
+        this.titleAlertName = "Este campo es requerido y debe estar comprendida entre 3 a 20 caracteres.";
+      }
+  }
+  //nuevo direction
+  public validateDirection(): any {
+    if (this.formGroup.value.direction === null ) {
+        this.titleAlertDirection="Este campo es requerido, la dirección debe estar comprendida entre 10 a 100 caracteres.";
+      }
+  }
+  //nuevo phone
+  public validatePhone(): any {
+    if (this.formGroup.value.phone === null ) {
+        this.titleAlertPhone = "El campo Telefóno no puede estar esta vacio y debe tener de 8 digitos.";
+      }
+  }
+  //only number will be add
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  //nuevo email
+  public validateEmail(): any {
+    if (this.formGroup.value.email === null ) {
+        this.titleAlertEmail = "Este campo no puede estar esta vacio y debe cumplir con el formato __@__mail.com";
+      }
+  }
+  //FIN VALIDACIONES
   
 
   /**ESTRUCTURA DE COMPANY PARA EDITAR*/
