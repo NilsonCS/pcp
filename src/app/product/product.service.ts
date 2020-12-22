@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
-  url: string = 'http://localhost:8080/v1/product/';
+  url: string = 'http://localhost:8080/v1/product';
   last: any ;
   constructor(private http: HttpClient) { }
 
