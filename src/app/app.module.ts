@@ -32,6 +32,7 @@ import { ListarProductComponent } from './product/listar-product/listar-product.
 import { EditProductComponent } from './product/edit-product/edit-product.component';
 import { AddStoreComponent } from './newStore/add-store/add-store.component';
 import { ListStoreComponent } from './newStore/list-store/list-store.component';
+import { CarritoComponent } from './newStore/carrito/carrito.component';
 
 
 
@@ -57,7 +58,8 @@ const routes: Routes = [
   {path: 'editProduct/:id', component: EditProductComponent},
   //nuevo Carrito
   {path: 'addStore', component: AddStoreComponent},
-  {path: 'listarStore', component: ListStoreComponent}
+  {path: 'listarStore', component: ListStoreComponent},
+  {path: 'carrito/:id', component: CarritoComponent}
 
 
 
@@ -88,7 +90,8 @@ const routes: Routes = [
     ListarProductComponent,
     EditProductComponent,
     AddStoreComponent,
-    ListStoreComponent
+    ListStoreComponent,
+    CarritoComponent,
 
   ],
   imports: [

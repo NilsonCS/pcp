@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../product/product.service';
+import { ServiceService } from '../../product/ServiceProduct/service.service';
 import { Product } from '../../product/product';
 import { ProductComponent } from '../../product/product.component';
 import { DomSanitizer } from "@angular/platform-browser"
 import { MatDialog } from '@angular/material/dialog';
+
 
 
 
@@ -16,7 +18,7 @@ export class ListStoreComponent implements OnInit {
 
   products:any;
  // products : Product[]=[];  
-  constructor(public productService:ProductService, private sanitizer: DomSanitizer, public dialog: MatDialog ) { }
+  constructor(public productService:ProductService,public service:ServiceService, private sanitizer: DomSanitizer, public dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -29,9 +31,8 @@ export class ListStoreComponent implements OnInit {
   }
 */
 
-/***/ 
   getProducts(){
-    this.productService.getProducts()
+    this.service.getProducts()
     .subscribe(data => {
       this.products = data;
     });

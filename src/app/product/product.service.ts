@@ -25,7 +25,8 @@ export class ProductService {
   //CreateProduct
   createProduct(product:any):Observable<any>{
     return this.http.post<any>(this.url,product);
-
   }
+
+  
   
 }
