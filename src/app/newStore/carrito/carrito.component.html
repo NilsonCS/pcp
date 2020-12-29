@@ -1,1 +1,19 @@
-<p>carrito works!</p>
+nuevo carrito
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+  
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> Opciones </th>
+            <td mat-cell *matCellDef="let element"> 
+              <button class="btn btn-danger" style="margin-left: 10px;"><mat-icon>delete</mat-icon> </button>
+            </td>
+          </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+        </ng-container>
+
+</table>

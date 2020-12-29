@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../product/product.service';
 import { ServiceService } from '../../product/ServiceProduct/service.service';
+import { CarritoServiceService } from '../ServiceStore/carrito-service.service';
 import { Product } from '../../product/product';
 import { ProductComponent } from '../../product/product.component';
 import { DomSanitizer } from "@angular/platform-browser"
 import { MatDialog } from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
+
 
 
 
@@ -18,7 +23,8 @@ export class ListStoreComponent implements OnInit {
 
   products:any;
  // products : Product[]=[];  
-  constructor(public productService:ProductService,public service:ServiceService, private sanitizer: DomSanitizer, public dialog: MatDialog ) { }
+  constructor(public productService:ProductService,public service:ServiceService,public carritoService:CarritoServiceService,
+              private sanitizer: DomSanitizer, public dialog: MatDialog,private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -50,5 +56,18 @@ export class ListStoreComponent implements OnInit {
       width: '900px',height:'550px',disableClose: true 
     });
   }
+
+
+  //añadir al carrito
+  addToCart(product: Product){
+    this.carritoService.addProduct(product);
+    let sb = this.snackBar.open("Producto añadido","Ver carrito", {
+      duration: 2000,
+    });
+    sb.onAction().subscribe(() => {
+       this.router.navigateByUrl('/carrito')
+    });
+  }
+   
 
 }
