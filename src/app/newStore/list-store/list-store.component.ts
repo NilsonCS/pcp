@@ -53,7 +53,7 @@ export class ListStoreComponent implements OnInit {
   productInfo(product: Product) {
     this.productService.setLast(product);
     const dialogRef = this.dialog.open(ProductComponent,{
-      width: '900px',height:'550px',disableClose: true 
+      width: '1040px',height:'550px',disableClose: true 
     });
   }
 

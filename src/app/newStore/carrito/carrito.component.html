@@ -37,7 +37,7 @@ nuevo carrito
             <ng-container matColumnDef="details">
                 <th mat-header-cell *matHeaderCellDef> Detalle </th>
                 <td mat-cell *matCellDef="let element"> 
-                <button mat-raised-button color="primary"  >Ver</button>
+                <button mat-raised-button color="primary" (click)="infoProduct(element)" >Ver</button>
                 </td>
             </ng-container>
 

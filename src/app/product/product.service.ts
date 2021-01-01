@@ -15,6 +15,7 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
   }
+  //obtiene el detalle del producto
   setLast(product: Product){
       this.last = product;
   }
