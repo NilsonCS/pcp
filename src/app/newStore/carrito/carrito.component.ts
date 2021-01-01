@@ -14,12 +14,14 @@ import { CarritoServiceService  } from '../ServiceStore/carrito-service.service'
 export class CarritoComponent implements OnInit {
 
   products: Product[] = [];
+  total: number = 0;
   displayedColumns: string[] = ['name', 'weight', 'symbol', 'product', 'details', 'position'];
 
   constructor(public carritoService:CarritoServiceService , private sanitizer: DomSanitizer, public productService:ProductService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getProducts ();
+    this.getTotal();
   }
 
   //obteniendo productos para el carrito
@@ -44,6 +46,11 @@ export class CarritoComponent implements OnInit {
   delete(product: Product){
     this.carritoService.deleteProduct(product);
     this.getProducts();
+  }
+
+  //total de precios de productos
+  getTotal (){
+    this.total = this.carritoService.getTotal();
   }
 
 }

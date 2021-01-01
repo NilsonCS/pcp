@@ -7,6 +7,7 @@ import { Product } from '../../product/product';
 export class CarritoServiceService {
 
   products:Product[]=[];
+  total: number = 0;
   constructor() { }
 
   //añadir productos
@@ -28,6 +29,16 @@ export class CarritoServiceService {
       }
     }
     this.products = temp;
+  }
+
+  //obtener el precio total de los productos
+  getTotal():number{
+    this.total = 0;
+    for (let product of this.products){
+      this.total+=product.unitPrice;
+      console.log(product.unitPrice);
+    }
+    return this.total;
   }
 
   

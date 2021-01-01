@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit {
     });
     sb.onAction().subscribe(() => {
       this.dialog.closeAll(); 
-      this.router.navigateByUrl('/cart')
+      this.router.navigateByUrl('/carrito')
     });
   }
 }
