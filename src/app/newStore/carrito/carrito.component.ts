@@ -32,11 +32,18 @@ export class CarritoComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
+  //Detalle del producto
   infoProduct(product: Product) {
     this.productService.setLast(product);
     const dialogRef = this.dialog.open(ProductComponent,{
       width: '1040px',height:'550px' ,disableClose: true 
     });
   } 
+
+  //Eliminar producto
+  delete(product: Product){
+    this.carritoService.deleteProduct(product);
+    this.getProducts();
+  }
 
 }
