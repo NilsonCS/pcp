@@ -27,17 +27,12 @@ getTotal(){
 }
 createForm() {
   this.formGroup = this.formBuilder.group({
-    email: [
-      null,
-      [Validators.required, Validators.email],
-      this.checkInUseEmail
-    ],
     name: [null, Validators.required],
-    password: [null, [Validators.required, this.checkPassword]],
-    description: [
-      null,
-      [Validators.required, Validators.minLength(5), Validators.maxLength(100)]
-    ],
+    email: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(100)] ],
+    date: [null, Validators.required],
+
+    //email: [null, [Validators.required, Validators.email],this.checkInUseEmail],
+    //password: [null, [Validators.required, this.checkPassword]],
     validate: ""
   });
 }
@@ -100,9 +95,14 @@ getErrorPassword() {
 }
 
 onSubmit(post: any) {
-  this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1, "total":this.total, "contact":post.email, "details":post.description}).subscribe(data => {this.post = "Guardado con exito!!!";});
+  this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1,
+                             "contact":post.name,
+                             "address":post.email,
+                             "date":post.date })
+                             .subscribe(data => {this.post = "Guardado con exito!!!";});
 
 }
+
 close(){
   this.dialog.closeAll();
 }
