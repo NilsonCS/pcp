@@ -5,6 +5,7 @@ import { ProductComponent } from 'src/app/product/product.component';
 import { Product } from '../../product/product';
 import { ProductService } from '../../product/product.service';
 import { CarritoServiceService  } from '../ServiceStore/carrito-service.service';
+import { CheckoutComponent } from '../../checkout/checkout.component';
 
 @Component({
   selector: 'app-carrito',
@@ -51,6 +52,13 @@ export class CarritoComponent implements OnInit {
   //total de precios de productos
   getTotal (){
     this.total = this.carritoService.getTotal();
+  }
+
+  //Metodo openCheckout nos redirige al CheckoutComponent
+  openCheckout(): void {
+    const dialogRef = this.dialog.open(CheckoutComponent,{
+      width: '640px' 
+    });
   }
 
 }

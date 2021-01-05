@@ -59,6 +59,9 @@ nuevo carrito
     <br>
     <mat-toolbar color="primary">
         <span ><h1 align="center"> Total: {{total | currency}}</h1></span> <!--Metodo getTotal-->
+
+        <span class="example-spacer"></span><!--para poner el checkout al costado derecho-->
+        <button mat-raised-button color="primary" (click)="openCheckout()" class="check">Checkout</button> <!--Metodo openCheckout-->
     </mat-toolbar>
 
 </div>

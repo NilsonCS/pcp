@@ -4,6 +4,11 @@ import { Observable } from "rxjs";
 import { CartService } from '../cart/cart.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutService } from './checkout.service';
+import { CarritoServiceService } from '../newStore/ServiceStore/carrito-service.service';
+import swal from "sweetalert2";
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -15,15 +20,22 @@ titleAlert: string = "This field is required";
 post: any = "";
 total: number = 0;
 
-constructor(private formBuilder: FormBuilder, public cartService: CartService, private dialog: MatDialog, private checkoutService: CheckoutService) {}
+constructor(private formBuilder: FormBuilder, public cartService: CartService,
+            public carritoService: CarritoServiceService, private dialog: MatDialog,
+            private checkoutService: CheckoutService, private router:Router) {}
 
 ngOnInit() {
   this.createForm();
   this.setChangeValidate();
   this.getTotal();
 }
+/**
 getTotal(){
   this.total= this.cartService.getTotal();
+}
+ */
+getTotal(){
+  this.total= this.carritoService.getTotal();
 }
 createForm() {
   this.formGroup = this.formBuilder.group({
@@ -98,8 +110,20 @@ onSubmit(post: any) {
   this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1,
                              "contact":post.name,
                              "address":post.email,
-                             "date":post.date })
-                             .subscribe(data => {this.post = "Guardado con exito!!!";});
+                             "date":post.date,
+                             "total":this.total })
+                             .subscribe(data => {
+                                this.post = "Guardado con exito!!!";
+                                //mensaje despues de guardar el checkout
+                                swal.fire(
+                                  'Agregado!',
+                                  `La su reserva se ha realizado exitosamente.`,
+                                  'success'
+                                );
+                                //alert("La Empresa se guardo exitosamente");
+                                this.router.navigate(["listarStore"]);
+                              
+                              });
 
 }
 
