@@ -19,6 +19,9 @@ public formGroup: any;
 titleAlert: string = "This field is required";
 post: any = "";
 total: number = 0;
+//validaciones
+titleAlertName: string = "";
+titleAlertEmail: string = "";
 
 constructor(private formBuilder: FormBuilder, public cartService: CartService,
             public carritoService: CarritoServiceService, private dialog: MatDialog,
@@ -28,6 +31,9 @@ ngOnInit() {
   this.createForm();
   this.setChangeValidate();
   this.getTotal();
+
+  this.validateName();
+  this.validateEmail();
 }
 /**
 getTotal(){
@@ -39,8 +45,8 @@ getTotal(){
 }
 createForm() {
   this.formGroup = this.formBuilder.group({
-    name: [null, Validators.required],
-    email: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(100)] ],
+    name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(20) ]],
+    email: [null, [Validators.required, Validators.email] ],
     date: [null, Validators.required],
 
     //email: [null, [Validators.required, Validators.email],this.checkInUseEmail],
@@ -106,6 +112,27 @@ getErrorPassword() {
     : "";
 }
 
+//validaciones
+  //nuevo name
+  public validateName(): any {
+    if (this.formGroup.value.name === null ) {
+        this.titleAlertName = "Este campo es requerido y debe estar comprendida entre 3 a 20 caracteres.";
+      }
+  }
+  //nuevo email
+  public validateEmail(): any {
+    if (this.formGroup.value.email === null ) {
+        this.titleAlertEmail = "Este campo no puede estar esta vacio y debe cumplir con el formato __@__mail.com";
+      }
+  }
+
+  //validacion de espacios
+  public validarEspacios(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+
 onSubmit(post: any) {
   this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1,
                              "contact":post.name,
@@ -114,16 +141,19 @@ onSubmit(post: any) {
                              "total":this.total })
                              .subscribe(data => {
                                 this.post = "Guardado con exito!!!";
-                                //mensaje despues de guardar el checkout
-                                swal.fire(
-                                  'Agregado!',
-                                  `La su reserva se ha realizado exitosamente.`,
-                                  'success'
-                                );
-                                //alert("La Empresa se guardo exitosamente");
-                                this.router.navigate(["listarStore"]);
-                              
+                                  //mensaje despues de guardar el checkout
+                                  swal.fire(
+                                    'Agregado!',
+                                    `La su reserva se ha realizado exitosamente.`,
+                                    'success'
+                                  );
+
+                                  this.close();
+                                  this.router.navigate(["listarStore"]);
+                            
                               });
+                              this.formGroup.reset();
+
 
 }
 
