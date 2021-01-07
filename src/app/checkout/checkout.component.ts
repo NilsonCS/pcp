@@ -45,7 +45,7 @@ getTotal(){
 }
 createForm() {
   this.formGroup = this.formBuilder.group({
-    name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(20) ]],
+    name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(50) ]],
     email: [null, [Validators.required, Validators.email] ],
     date: [null, Validators.required],
 
@@ -116,7 +116,7 @@ getErrorPassword() {
   //nuevo name
   public validateName(): any {
     if (this.formGroup.value.name === null ) {
-        this.titleAlertName = "Este campo es requerido y debe estar comprendida entre 3 a 20 caracteres.";
+        this.titleAlertName = "Este campo es requerido.";
       }
   }
   //nuevo email
@@ -132,6 +132,13 @@ getErrorPassword() {
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true };
   }
+
+  //validar solo letras
+  public soloLetras(){
+    let regex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+    return regex;
+    console.log("ñoñerías");
+    }
 
 onSubmit(post: any) {
   this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1,
