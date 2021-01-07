@@ -35,6 +35,10 @@
 
   <mat-toolbar color="primary">
     <span class="fill-remaining-space"><h1 align="center"> Total: {{total | currency}}</h1></span>
+
+    <div ng-app ng-controller="Ctrl">
+      {{date | date:'yyyy-MM-dd'}}
+    </div>
   </mat-toolbar>
 <!--
 <div class="container" *ngIf="!post; else forminfo"> 

@@ -19,6 +19,7 @@ public formGroup: any;
 titleAlert: string = "This field is required";
 post: any = "";
 total: number = 0;
+date: any;
 //validaciones
 titleAlertName: string = "";
 titleAlertEmail: string = "";
@@ -31,6 +32,7 @@ ngOnInit() {
   this.createForm();
   this.setChangeValidate();
   this.getTotal();
+  this.getDate();
 
   this.validateName();
   this.validateEmail();
@@ -40,9 +42,16 @@ getTotal(){
   this.total= this.cartService.getTotal();
 }
  */
+//Costo total de los productos
 getTotal(){
   this.total= this.carritoService.getTotal();
 }
+
+//fecha
+getDate(){
+  this.date = new Date();
+}
+
 createForm() {
   this.formGroup = this.formBuilder.group({
     name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(50) ]],
@@ -133,12 +142,6 @@ getErrorPassword() {
     return isValid ? null : { 'whitespace': true };
   }
 
-  //validar solo letras
-  public soloLetras(){
-    let regex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
-    return regex;
-    console.log("ñoñerías");
-    }
 
 onSubmit(post: any) {
   this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1,
