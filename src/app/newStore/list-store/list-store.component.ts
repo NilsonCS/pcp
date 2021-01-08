@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ProductService } from '../../product/product.service';
 import { ServiceService } from '../../product/ServiceProduct/service.service';
 import { CarritoServiceService } from '../ServiceStore/carrito-service.service';
@@ -9,7 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -22,14 +23,25 @@ import { Router } from '@angular/router';
 export class ListStoreComponent implements OnInit {
 
   products:any;
+  //paginacion
+  productoPaginacion: Product[] =[];
+  dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>(this.productoPaginacion);
+  @ViewChild(MatPaginator, { static: true }) paginator: any;
+
  // products : Product[]=[];  
   constructor(public productService:ProductService,public service:ServiceService,public carritoService:CarritoServiceService,
-              private sanitizer: DomSanitizer, public dialog: MatDialog,private snackBar: MatSnackBar, private router: Router) { }
+              private sanitizer: DomSanitizer, public dialog: MatDialog,private snackBar: MatSnackBar, private router: Router) {
+               }
 
+  
   ngOnInit(): void {
     this.getProducts();
-  }
+    //paginacion
+    //this.dataSource.paginator = this.paginator;
+    this.dataSource = new MatTableDataSource<Product>(this.productoPaginacion);
+    this.dataSource.paginator = this.paginator;
 
+  }
   /**lista de productos de la pagina
   getProducts(){
     this.productService.getProducts()

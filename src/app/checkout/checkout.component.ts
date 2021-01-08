@@ -56,7 +56,7 @@ createForm() {
   this.formGroup = this.formBuilder.group({
     name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(50) ]],
     email: [null, [Validators.required, Validators.email] ],
-    date: [null, Validators.required],
+   //date: [null, Validators.required],
 
     //email: [null, [Validators.required, Validators.email],this.checkInUseEmail],
     //password: [null, [Validators.required, this.checkPassword]],
@@ -131,7 +131,7 @@ getErrorPassword() {
   //nuevo email
   public validateEmail(): any {
     if (this.formGroup.value.email === null ) {
-        this.titleAlertEmail = "Este campo no puede estar esta vacio y debe cumplir con el formato __@__mail.com";
+        this.titleAlertEmail = "Este campo no puede estar vacio y debe cumplir con el formato __@__mail.com";
       }
   }
 
@@ -147,14 +147,14 @@ onSubmit(post: any) {
   this.checkoutService.post({"cartId":1 ,"paymentDetailsId": 1,
                              "contact":post.name,
                              "address":post.email,
-                             "date":post.date,
+                             "date":this.date,
                              "total":this.total })
                              .subscribe(data => {
                                 this.post = "Guardado con exito!!!";
                                   //mensaje despues de guardar el checkout
                                   swal.fire(
                                     'Agregado!',
-                                    `La su reserva se ha realizado exitosamente.`,
+                                    `Reserva exitosa, desde hoy tiene 10 días para finalizar la compra.`,
                                     'success'
                                   );
 
