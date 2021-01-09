@@ -1,7 +1,7 @@
 <p>list-store works!</p>
 
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px grid" class="contenedor" fxLayoutAlign="flex-start">
-    <div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products" >
+    <div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: page }" >
         
         <mat-card class="prod" >
 
@@ -22,7 +22,12 @@
         </mat-card>
 
     </div>
+
     <!--Paginacion-->
-    <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+    <pagination-controls 
+        (pageChange)="page = $event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente" >
+    </pagination-controls>
 
 </div>    

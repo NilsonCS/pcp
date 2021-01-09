@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 
@@ -24,37 +25,38 @@ export class ListStoreComponent implements OnInit {
 
   products:any;
   //paginacion
-  productoPaginacion: Product[] =[];
-  dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>(this.productoPaginacion);
-  @ViewChild(MatPaginator, { static: true }) paginator: any;
+  //productoPaginacion: Product[]=[];
+  public page: number=0;
 
  // products : Product[]=[];  
   constructor(public productService:ProductService,public service:ServiceService,public carritoService:CarritoServiceService,
-              private sanitizer: DomSanitizer, public dialog: MatDialog,private snackBar: MatSnackBar, private router: Router) {
-               }
+              private sanitizer: DomSanitizer, public dialog: MatDialog,private snackBar: MatSnackBar, private router: Router
+              ,private http: HttpClient) {
+                
+              }
 
   
+
   ngOnInit(): void {
     this.getProducts();
     //paginacion
-    //this.dataSource.paginator = this.paginator;
-    this.dataSource = new MatTableDataSource<Product>(this.productoPaginacion);
-    this.dataSource.paginator = this.paginator;
 
   }
+
+  
   /**lista de productos de la pagina
   getProducts(){
     this.productService.getProducts()
     .subscribe(products => this.products = products);
   }
 */
-
   getProducts(){
     this.service.getProducts()
     .subscribe(data => {
       this.products = data;
     });
   } 
+
 
   //metodo para obtener imgs de la base de datos
   public getImgUrl(url : string) {
