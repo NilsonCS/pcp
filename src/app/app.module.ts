@@ -34,6 +34,7 @@ import { EditProductComponent } from './product/edit-product/edit-product.compon
 import { AddStoreComponent } from './newStore/add-store/add-store.component';
 import { ListStoreComponent } from './newStore/list-store/list-store.component';
 import { CarritoComponent } from './newStore/carrito/carrito.component';
+import { SaleComponent } from './newStore/sale/sale.component';
 
 
 
@@ -93,6 +94,7 @@ const routes: Routes = [
     AddStoreComponent,
     ListStoreComponent,
     CarritoComponent,
+    SaleComponent,
 
   ],
   imports: [
