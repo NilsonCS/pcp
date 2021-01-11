@@ -8,7 +8,7 @@ table {
     font-size: xx-large;
 }
 button.check{
-    height: 70%;
+    height: 65%;
     background-color:green;
 }
 button.check:hover{

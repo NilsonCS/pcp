@@ -6,6 +6,7 @@ import { Product } from '../../product/product';
 import { ProductService } from '../../product/product.service';
 import { CarritoServiceService  } from '../ServiceStore/carrito-service.service';
 import { CheckoutComponent } from '../../checkout/checkout.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
@@ -18,7 +19,7 @@ export class CarritoComponent implements OnInit {
   total: number = 0;
   displayedColumns: string[] = ['name', 'weight', 'symbol', 'product', 'details', 'position'];
 
-  constructor(public carritoService:CarritoServiceService , private sanitizer: DomSanitizer, public productService:ProductService, private dialog:MatDialog) { }
+  constructor(public carritoService:CarritoServiceService , private sanitizer: DomSanitizer, public productService:ProductService, private dialog:MatDialog,private router:Router) { }
 
   ngOnInit(): void {
     this.getProducts ();
@@ -59,6 +60,11 @@ export class CarritoComponent implements OnInit {
     const dialogRef = this.dialog.open(CheckoutComponent,{
       width: '640px' 
     });
+  }
+
+  //Metodo openSale nos redirige al saleComponent
+  openSale(){
+    this.router.navigate(["sale"]);
   }
 
 }

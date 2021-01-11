@@ -1,7 +1,7 @@
 <p>list-store works!</p>
 
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px grid" class="contenedor" fxLayoutAlign="flex-start">
-    <div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: page }" >
+    <div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: page }" >
         
         <mat-card class="prod" >
 

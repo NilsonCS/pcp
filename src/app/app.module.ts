@@ -61,8 +61,9 @@ const routes: Routes = [
   //nuevo Carrito
   {path: 'addStore', component: AddStoreComponent},
   {path: 'listarStore', component: ListStoreComponent},
-  {path: 'carrito', component: CarritoComponent}
-
+  {path: 'carrito', component: CarritoComponent},
+  //nueva venta
+  {path: 'sale', component: SaleComponent}
 
 
 ];
