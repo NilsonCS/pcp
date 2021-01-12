@@ -1,0 +1,105 @@
+<p>sale works!</p>
+
+<li></li>
+<div class="container">
+  <button   class="btn btn-info"> Volver </button>
+</div>
+
+
+<div class="container" id="registration-form">  
+    <div class="image"></div>
+      <div class="frm">
+        <mat-toolbar color="primary">
+          <span class="fill-remaining-space"><h1>Compra</h1></span>
+        </mat-toolbar>
+          <br> 
+          <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)"  class="form">
+              <!--Datos de la tarjeta-->
+              <div class="form-group">
+                  <label for="name">Número tarjeta:</label>
+                  <input matInput class="form-control" (keyup)="validateCard($event)"  placeholder="Número de la tarjeta" formControlName="card">
+              </div>
+
+              <div class="form-group" id="expiration-date">
+                <label for="name">Expira:</label>
+                <!--
+                <input matInput class="form-control"   placeholder="Fecha de expiración" formControlName="expirationDate">
+                  -->
+                  <select matInput class="form-control" formControlName="expirationDate">
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero </option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                  <select matInput class="form-control" formControlName="expirationDate">
+                    <option value="21"> 2021</option>
+                    <option value="22"> 2022</option>
+                    <option value="23"> 2023</option>
+                    <option value="24"> 2024</option>
+                    <option value="25"> 2025</option>
+                    <option value="26"> 2026</option>
+                    <option value="27"> 2027</option>
+                    <option value="28"> 2028</option>
+                  </select> 
+    
+              </div>
+
+              <div class="form-group">
+                <label for="name">Codigo de seguridad CCV:</label>
+                <input matInput class="form-control"   placeholder="CCV" formControlName="securityCode">
+              </div>
+
+              <!--Datos de la Persona-->
+              <div class="form-group">
+                  <label for="name">Nombre:</label>
+                  <input matInput class="form-control"   pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]" placeholder="Nombre" formControlName="name">
+                  
+                  <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+                    {{ titleAlertName }}
+                  </mat-error> 
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Teléfono:</label>
+                <!--(keypress)="keyPress($event)" required type="text" //valida que solo podamos escribir numeros-->
+                <input matInput class="form-control" (keypress)="keyPress($event)" required   type="text"   placeholder="Teléfono" formControlName="phone">
+
+                <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
+                  {{ titleAlertPhone }}
+                </mat-error>  
+              </div>
+
+              <div class="form-group">
+                  <label for="direction">Dirección:</label>
+                  <textarea matInput class="form-control" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]" placeholder="Dirección" formControlName="direction"></textarea>
+                 
+                  <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
+                    {{ titleAlertDirection }}
+                  </mat-error>
+              </div>
+
+              <div class="form-group">
+                <label for="name">total:</label>
+                <input matInput class="form-control"   placeholder="total" formControlName="total">
+                
+ 
+            </div>
+           
+
+              <div class="form-group">
+                  <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+              </div>
+
+          </form>
+
+
+      </div>
+  </div>
