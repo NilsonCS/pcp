@@ -32,8 +32,9 @@ export class SaleComponent implements OnInit {
   createForm() {
     this.formGroup = this.formBuilder.group({
 
-        card: [null, [Validators.required] ],
-        expirationDate: [null, [Validators.required] ],
+        card: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)] ],
+        month: [null, [Validators.required] ],
+        year: [null, [Validators.required] ],
         securityCode: [null, [Validators.required] ],
       
         // email:[null, [Validators.required, Validators.email] ],
@@ -83,7 +84,7 @@ export class SaleComponent implements OnInit {
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true };
   }
-  
+  //validación de tarjeta
   public validateCard(e: any){
     let word  = e.target.value.split(' ').join('');
     let newWord = '';
@@ -98,7 +99,7 @@ export class SaleComponent implements OnInit {
     e.target.value = newWord.trim();
     console.log(e.target.value); //captando el contenido del campo tarjeta
   }
-
+  //validacón de ccv
   public validateCcv(e: any){
     let word  = e.target.value;
     let newWord = '';
@@ -109,12 +110,20 @@ export class SaleComponent implements OnInit {
     console.log(e.target.value); //captando el contenido del campo tarjeta
   }
 
+  //validate fecha
+  public validateDate(e: any){
+    let word  = e.target.value;
+    console.log(e.target.value); //captando el contenido del campo tarjeta
+
+  }
+
 
   onSubmit(post: any) {
     this.saleService.createSale({
        "companyId": 1,
        "card":post.card,
-       "expirationDate":post.expirationDate ,
+       "month":post.month,
+       "year":post.year,
        "securityCode":post.securityCode,
        "name":post.name,
        "direction":post.direction,
