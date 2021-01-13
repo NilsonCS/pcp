@@ -21,10 +21,10 @@ export class ProducttypeService {
   getProducttype() {
     return this.http.get<Producttype[]>(this.Url);
   }
-  //
-  // createProducttype(producttype:any):Observable<any>{
-  //   return this.http.post<any>(this.Url, producttype);
-  // }
+
+  createProductType(producttype:any):Observable<any>{
+    return this.http.post<any>(this.Url, producttype);
+  }
 
   getProducttypeId(id:any):Observable<any>{
     return this.http.get<Producttype[]>(this.Url+"/"+id);
