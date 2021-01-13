@@ -18,107 +18,85 @@ export class AddProductComponent implements OnInit {
   titleAlert: string = "This field is required";
   post: any = "";
   total: number = 0;
+
+  titleAlertName: string = "";
+  titleAlertDirection: string = "";
+  titleAlertPhone: string = "";
+  titleAlertEmail: string = "";
   
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog, public service:ProductService, private router:Router) {}
   
   ngOnInit() {
     this.createForm();
-    this.setChangeValidate();
+
+    this.validateName();
+    this.validateDirection();
+    this.validatePhone();
     
   }
  
   createForm() {
     this.formGroup = this.formBuilder.group({
-      email: [
-        null,
-        [Validators.required, Validators.email],
-        this.checkInUseEmail
-      ],
-      name: [null, Validators.required],
-      productName: [null, Validators.required],
-      productDescription: [null, Validators.required],
+
+      productName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20) ] ],
+      productDescription: [null,[Validators.required, this.validarEspacios, Validators.minLength(10), Validators.maxLength(100)] ],
       model: [null, Validators.required],
-      stock: [null, Validators.required],
-      weight: [null, Validators.required],
+      stock: [null, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(1)] ],
       unitPrice: [null, Validators.required],
-      currency: [null, Validators.required],
       img: [null, Validators.required],
-
-
-      phone: [null, [Validators.required, this.checkPhone]],
-      direction: [
-        null,
-        [Validators.required, Validators.minLength(5), Validators.maxLength(100)]
-      ],
       validate: ""
     });
   }
   
-  setChangeValidate() {
-    this.formGroup.get("validate").valueChanges.subscribe((validate: any) => {
-      if (validate == "1") {
-        this.formGroup
-          .get("name")
-          .setValidators([Validators.required, Validators.minLength(5)]);
-        this.titleAlert = "You need to specify at least 5 characters";
-      } else {
-        this.formGroup.get("name").setValidators(Validators.required);
-      }
-      this.formGroup.get("name").updateValueAndValidity();
-    });
-  }
   
-  get name() {
-    return this.formGroup.get("name") as FormControl;
-  }
+
   
-  checkPassword(control:any) {
-    let enteredPassword = control.value;
-    let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
-    return !passwordCheck.test(enteredPassword) && enteredPassword
-      ? { requirements: true }
-      : null;
-  }
-  
-  checkInUseEmail(control:any) {
-    // mimic http database access
-    let db = ["jack@torchwood.com"];
-    return new Observable(observer => {
-      setTimeout(() => {
-        let result =
-          db.indexOf(control.value) !== -1 ? { alreadyInUse: true } : null;
-        observer.next(result);
-        observer.complete();
-      }, 4000);
-    });
-  }
-  
-  getErrorEmail() {
-    return this.formGroup.get("email").hasError("required")
-      ? "Field is required"
-      : this.formGroup.get("email").hasError("pattern")
-      ? "Not a valid emailaddress"
-      : this.formGroup.get("email").hasError("alreadyInUse")
-      ? "This emailaddress is already in use"
-      : "";
-  }
-  
-  getErrorPassword() {
-    return this.formGroup.get("password").hasError("required")
-      ? "Field is required (at least eight characters, one uppercase letter and one number)"
-      : this.formGroup.get("password").hasError("requirements")
-      ? "Password needs to be at least eight characters, one uppercase letter and one number"
-      : "";
+  //validacion
+  public validarEspacios(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
   }
 
-  checkPhone(control:any) {
-    let enteredPassword = control.value;
-    let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
-    return !passwordCheck.test(enteredPassword) && enteredPassword
-      ? { requirements: true }
-      : null;
+   //nuevo name
+   public validateName(): any {
+    if (this.formGroup.value.productName === null ) {
+        this.titleAlertName = "Este campo es requerido y debe estar comprendida entre 3 a 20 caracteres.";
+      }
   }
-  
+  //nuevo descripcion
+  public validateDirection(): any {
+    if (this.formGroup.value.direction === null ) {
+        this.titleAlertDirection="Este campo es requerido, la descripción debe estar comprendida entre 10 a 100 caracteres.";
+      }
+  }
+  //nuevo phone
+  public validatePhone(): any {
+    if (this.formGroup.value.phone === null ) {
+        this.titleAlertPhone = "Este campo  no puede estar esta vacio .";
+      }
+  }
+  //only number will be add
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+  //fin validacion
+
+
+
+
+
+
+
+
+
+
+
+
   onSubmit(post: any) {
     this.service.createProduct({
         "productName":post.productName ,

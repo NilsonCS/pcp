@@ -1,18 +1,21 @@
-<mat-toolbar color="primary">
-    
+<mat-toolbar color="primary"> 
     <span class="fill-remaining-space">{{product.productName}}</span>
     <mat-icon class="icon" (click)="close()">close</mat-icon>
-  </mat-toolbar>
+</mat-toolbar>
+
 <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px grid" class="contenedor" fxLayoutAlign="center">
-<div class="img">
-    <img [src]="getImg()" alt="">
-</div>
-<div class="details">
-    <span><h2>Modelo: {{product.model}}</h2></span>
-    <span><h2>Precio: {{product.unitPrice | currency}}</h2></span>
-    <span><h2>Especificaciones tecnicas: {{product.productDescription}}</h2></span>
-</div>
-<div align="center">
-    <button mat-raised-button color="primary" (click)="addToCart(product)" >Añadir al carrito</button>
-  </div>
+    <div class="img">
+        <img [src]="getImg()" alt="">
+    </div>
+
+    <div class="details">
+        <span><h2>Modelo: {{product.model}}</h2></span>
+        <span><h2>Precio: {{product.unitPrice | currency}}</h2></span>
+        <span><h2>Especificaciones tecnicas: {{product.productDescription}}</h2></span>
+    </div>
+<!--
+    <div align="center">
+        <button mat-raised-button color="primary" (click)="addToCart(product)" >Añadir al carrito</button>
+    </div>
+-->
 </div>

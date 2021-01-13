@@ -7,13 +7,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
-  url: string = 'http://localhost:8080/v1/product/';
+  url: string = 'http://localhost:8080/v1/product';
   last: any ;
   constructor(private http: HttpClient) { }
 
+  //conexión con el backend, llamando los productos
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
   }
+  //obtiene el detalle del producto
   setLast(product: Product){
       this.last = product;
   }
@@ -24,7 +26,8 @@ export class ProductService {
   //CreateProduct
   createProduct(product:any):Observable<any>{
     return this.http.post<any>(this.url,product);
-
   }
+
+  
   
 }

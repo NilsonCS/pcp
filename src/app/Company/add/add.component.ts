@@ -9,6 +9,7 @@ import swal from "sweetalert2";
 import { getNumberOfCurrencyDigits } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -25,7 +26,7 @@ export class AddComponent implements OnInit {
 
   post: any = "";
   total: number = 0;
-  
+
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog, public service:ServiceService, private router:Router) {}
   
   ngOnInit() {
@@ -36,17 +37,19 @@ export class AddComponent implements OnInit {
     this.validatePhone();
     this.validateEmail();
 
+  //  this.validar();
+
   }
  
   createForm() {
     this.formGroup = this.formBuilder.group({
 
-        email:[null, [Validators.required, Validators.email], this.checkInUseEmail ],
-        name: [null, Validators.required],
-        phone:[null, [Validators.required,Validators.pattern("^[0-9]*$"), Validators.minLength(8), Validators.maxLength(8)] ],
-        direction:[null, [Validators.required, Validators.minLength(10), Validators.maxLength(100)] ],
+        email:[null, [Validators.required, Validators.email] ],
+        name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(20) ] ],
+        phone:[null, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(8), Validators.maxLength(8)] ],
+        direction:[null,[Validators.required, this.validarEspacios, Validators.minLength(10), Validators.maxLength(100)] ],
         validate: ""
-
+ 
     });
   }
   
@@ -68,16 +71,35 @@ export class AddComponent implements OnInit {
     return this.formGroup.get("name") as FormControl;
   }
 
+  /**nuevo
+  public validar(): any {
+    if (String.prototype.trim() === ""){
+      
+     alert("debe ingresar un valor en el campo");
+    }
+   // else
+    // alert("ingreso "+ this.formGroup.value.trim() +", es correcto!");
+   }*/
+  public validarEspacios(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+
+ 
+
+
+
   //nuevo name
   public validateName(): any {
     if (this.formGroup.value.name === null ) {
-        this.titleAlertName = "El campo Nombre no puede estar esta vacio.";
+        this.titleAlertName = "Este campo es requerido y debe estar comprendida entre 3 a 20 caracteres.";
       }
   }
   //nuevo direction
   public validateDirection(): any {
     if (this.formGroup.value.direction === null ) {
-        this.titleAlertDirection="Este campo es requerido, la dirección debe estar comprendida entre 10 y 100 caracteres.";
+        this.titleAlertDirection="Este campo es requerido, la dirección debe estar comprendida entre 10 a 100 caracteres.";
       }
   }
   //nuevo phone
@@ -101,7 +123,10 @@ export class AddComponent implements OnInit {
         this.titleAlertEmail = "Este campo no puede estar esta vacio y debe cumplir con el formato __@__mail.com";
       }
   }
-    
+
+
+  //informacion valida
+ 
   
 
   checkInUseEmail(control:any) {

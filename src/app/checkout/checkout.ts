@@ -5,5 +5,5 @@ export interface Checkout {
     "date": Date,
     "total": number,
     "contact": string,
-    "details": string
+    "address": string
 }

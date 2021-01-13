@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CheckoutService {
-  url: string = 'http://localhost:8080/v1/checkout/'
+  url: string = 'http://localhost:8080/v1/checkout'
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -22,7 +22,7 @@ export class ListarProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getProduct()
+    this.service.getProducts()
     .subscribe(data =>{
       this.products=data;
     }) 

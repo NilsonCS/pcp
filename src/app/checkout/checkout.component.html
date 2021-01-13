@@ -3,6 +3,44 @@
   <mat-icon class="icon" (click)="close()">close</mat-icon>
 </mat-toolbar>
 
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+    <mat-form-field class="form-element">
+        <input matInput placeholder="Nombre"  pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]" formControlName="name">
+        
+        <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+          {{ titleAlertName }}
+        </mat-error> 
+    </mat-form-field>
+
+    
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Correo de electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" formControlName="email">
+
+      <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+        {{ titleAlertEmail }}
+      </mat-error>
+    </mat-form-field>
+    
+<!--
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Fecha" formControlName="date">
+    </mat-form-field>
+-->
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid" >Reserva
+      </button>
+    </div>
+
+  </form>
+
+  <mat-toolbar color="primary">
+    <span class="fill-remaining-space"><h1 align="left"> Total: {{total | currency}}</h1></span>
+
+    <div ng-app ng-controller="Ctrl">
+      {{date | date:'yyyy-MM-dd'}}
+    </div>
+  </mat-toolbar>
+<!--
 <div class="container" *ngIf="!post; else forminfo"> 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
 
@@ -20,11 +58,9 @@
       </mat-error>
     </mat-form-field>
 
+    
     <mat-form-field class="form-element">
-      <textarea matInput placeholder="Domicilio" formControlName="description"></textarea>
-      <mat-error *ngIf="!formGroup.controls['description'].valid && formGroup.controls['description'].touched">
-        Campo requerido, debe ser de entre 10 y 100 caracteres;
-      </mat-error>
+      <textarea matInput placeholder="Domicilio" formControlName="address"></textarea>
     </mat-form-field>
 
     <mat-form-field class="form-element">
@@ -35,14 +71,16 @@
       </mat-error>
     </mat-form-field>
     
+    
     <mat-form-field class="form-element">
       <input matInput placeholder="Total" formControlName="total" [value]="total | currency" [readonly]="true">
     </mat-form-field>
+   --> 
 
     <!--<div class="form-element">
       <mat-checkbox formControlName="validate" value="1">Solo reserva</mat-checkbox>
     </div>-->
-
+<!--
     <div class="form-element">
       <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Comprar</button>
     </div>
@@ -50,9 +88,10 @@
   </form>
 </div>
 
+
 <ng-template #forminfo>
   <div class="container">
     {{ post | json }}
   </div>
-  
 </ng-template>
+-->

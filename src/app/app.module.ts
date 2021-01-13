@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,10 @@ import { ListarbComponent } from './brand/listarb/listarb.component';
 import { ListarptComponent } from './producttype/listarpt/listarpt.component';
 import { ListarProductComponent } from './product/listar-product/listar-product.component';
 import { EditProductComponent } from './product/edit-product/edit-product.component';
+import { AddStoreComponent } from './newStore/add-store/add-store.component';
+import { ListStoreComponent } from './newStore/list-store/list-store.component';
+import { CarritoComponent } from './newStore/carrito/carrito.component';
+import { SaleComponent } from './newStore/sale/add-sale/sale.component';
 
 
 
@@ -54,7 +59,14 @@ const routes: Routes = [
   {path: 'add-city', component: AddCityComponent},
   {path: 'user/register', component: RegisterComponent},
   {path: 'listarProduct', component: ListarProductComponent},
-  {path: 'editProduct/:id', component: EditProductComponent}
+  {path: 'editProduct/:id', component: EditProductComponent},
+  //nuevo Carrito
+  {path: 'addStore', component: AddStoreComponent},
+  {path: 'listarStore', component: ListStoreComponent},
+  {path: 'carrito', component: CarritoComponent},
+  //nueva venta
+  {path: 'sale', component: SaleComponent}
+
 
 ];
 
@@ -82,7 +94,11 @@ const routes: Routes = [
     ListarptComponent,
     ListarProductComponent,
     EditProductComponent,
-    AddptComponent
+    AddptComponent,
+    AddStoreComponent,
+    ListStoreComponent,
+    CarritoComponent,
+    SaleComponent,
 
   ],
   imports: [
@@ -95,6 +111,7 @@ const routes: Routes = [
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

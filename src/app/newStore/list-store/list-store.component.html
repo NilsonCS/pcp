@@ -1,0 +1,33 @@
+<p>list-store works!</p>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px grid" class="contenedor" fxLayoutAlign="flex-start">
+    <div fxFlex="25%" fxFlex.sm="50%" fxFlex.md="33" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: page }" >
+        
+        <mat-card class="prod" >
+
+            <mat-card-header>
+                <mat-card-title>{{product.productName}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="getImgUrl(product.img)" alt="Fotografia de muestra" class="image" (click)="productInfo(product)">
+            
+            <mat-card-content align="center">
+                <h3> {{product.model}} </h3>
+                <h2> {{product.unitPrice | currency}} </h2>
+            </mat-card-content>
+
+            <div align="center">
+                <button mat-raised-button color="primary"  (click)="addToCart(product)">Añadir al carrito</button>
+            </div>
+              
+        </mat-card>
+
+    </div>
+
+    <!--Paginacion-->
+    <pagination-controls 
+        (pageChange)="page = $event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente" >
+    </pagination-controls>
+
+</div>    

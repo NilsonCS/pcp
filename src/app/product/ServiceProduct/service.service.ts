@@ -15,10 +15,11 @@ export class ServiceService {
 
   ProductUrl:string = 'http://localhost:8080/v1/product';
 
-  getProduct(): Observable<Product[]>{
+
+  //conexión con el backend, llamando los productos
+  getProducts(): Observable<Product[]>{
     return this.http.get<Product[]>(this.ProductUrl);
     }
-
 
   //Get product Id
   //para capturar la fila seleccinada y mostrar en el formulario
