@@ -1,0 +1,43 @@
+<p>list-checkout works!</p>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Empresas</h3>     
+        </div>
+
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr  class="text-left">
+                        <th>Id</th>
+                        <th>contacto</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr   class="text-left" *ngFor="let checkout of checkouts">
+                        <td>{{checkout.checkoutId}}  </td>
+                        <td>{{checkout.contact}}</td>
+
+
+                        <td>
+                            <!--IMAGEN LLama a info de Company
+                            <div class="img">
+                                <img (click)="infoCompany(company.companyId)" [src]="imgInfo"  height="55px" width="65px" 
+                                class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm" class="rounded-circle img-responsive">          
+                            </div>-->
+                        </td>
+                        <td>
+                            <button  class="btn btn-success"> Editar</button>
+                            <button type="button"  class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+
+        </div>    
+
+    </div>
+</div>
