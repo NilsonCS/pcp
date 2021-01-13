@@ -4,17 +4,6 @@
   <button (click)="Listar()"  class="btn btn-info"> Lista </button>
   <button (click)="Nuevo()" class="btn btn-info"  style="margin-left: 10px; "> Agregar </button>
 </div>
-<script> let envio = document.getElementById("envio")
-let nombre = document.getElementById("nombre")
-
-envio.addEventListener("click", (event) => {
-event.preventDefault()
-if (nombre.value === "") {
-alert("ingresa algo")
-} else {
-alert(`ok todo ok: ${nombre.value.trim()}`)
-}
-  })   </script>
 
 
 <!--prueba fondo de img -->
@@ -26,18 +15,16 @@ alert(`ok todo ok: ${nombre.value.trim()}`)
     <form  [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
 
       <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input matInput class="form-control" placeholder="Nombre de la marca" formControlName="name" >
+        <label for="typeName">Nombre:</label>
+        <input matInput class="form-control" placeholder="Nombre del tipo de producto" formControlName="typeName">
 
-        <mat-error *ngIf="!name.valid && name.touched ">
+        <mat-error *ngIf="!typeName.valid && typeName.touched">
           {{ titleAlert }}
         </mat-error>
       </div>
 
       <div class="form-group">
-        <button   type="submit" class="btn btn-success btn-lg">Guardar</button>
-
-
+        <button type="submit" class="btn btn-success btn-lg">Guardar</button>
       </div>
 
     </form>

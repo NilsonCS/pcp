@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {ServiceService} from '../../brand/service.service';
 import {Router} from '@angular/router';
+import {Validator} from './validator';
 
 @Component({
   selector: 'app-addb',
@@ -15,6 +16,7 @@ export class AddbComponent implements OnInit {
   post: any = '';
   total = 0;
 
+
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog, public service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -24,17 +26,17 @@ export class AddbComponent implements OnInit {
 
   createForm() {
     this.formGroup = this.formBuilder.group({
-
       name: [null, Validators.required],
     });
   }
+
 
   setChangeValidate() {
     this.formGroup.get('validate').valueChanges.subscribe((validate: any) => {
       if (validate == '1') {
         this.formGroup
           .get('name')
-          .setValidators([Validators.required, Validators.minLength(5)]);
+          .setValidators([Validators.required, Validators.minLength(5), ,  Validator.cannotContainSpace(this.name)]);
         this.titleAlert = 'You need to specify at least 5 characters';
       } else {
         this.formGroup.get('name').setValidators(Validators.required);

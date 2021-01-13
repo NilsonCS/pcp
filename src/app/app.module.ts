@@ -23,6 +23,7 @@ import { AddProductComponent } from '../app/product/add-product/add-product.comp
 import { RegisterComponent } from './user/register/register.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { AddbComponent } from './brand/addb/addb.component';
+import { AddptComponent } from './producttype/addpt/addpt.component';
 
 import { EditbComponent } from './brand/editb/editb.component';
 import { EditptComponent } from './producttype/editpt/editpt.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'listarpt', component: ListarptComponent},
   {path: 'add', component: AddComponent},
   {path: 'addb', component: AddbComponent},
+  {path: 'addpt', component: AddptComponent},
   {path: 'edit/:id', component: EditComponent},
   {path: 'editb/:id', component: EditbComponent},
   {path: 'editpt/:id', component: EditptComponent},
@@ -79,7 +81,8 @@ const routes: Routes = [
     ListarbComponent,
     ListarptComponent,
     ListarProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    AddptComponent
 
   ],
   imports: [
