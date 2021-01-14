@@ -12,15 +12,14 @@
               <div class="form-group">
                   <label for="name">Número tarjeta:</label>
                   <input matInput class="form-control" (keypress)="keyPress($event)" required  (keyup)="validateCard($event)"   placeholder="Número de la tarjeta" formControlName="card">
-                
+                  <mat-error *ngIf="!formGroup.controls['card'].valid && formGroup.controls['card'].touched">
+                    {{ titleAlertCard }}
+                  </mat-error> 
               </div>
 
               <div class="form-group" id="month" style=" width:200px; height: 50px; display: inline-block; margin-top: 50px;">
                 <label for="name">Fecha de expiracón:</label><br>
                 <label for="name">Mes:</label>
-                <!--
-                <input matInput class="form-control"   (keyup)="validateDate($event)" placeholder="Fecha de expiración" formControlName="expirationDate">
-                  -->
                     <select matInput class="form-control" formControlName="month" >
                       <option >Enero</option>
                       <option >Febrero </option>
@@ -61,6 +60,7 @@
                 </mat-error> 
               </div>
               <br><br>
+              
               <!--Datos de la Persona-->
               <div class="form-group">
                   <label for="name">Nombre:</label>

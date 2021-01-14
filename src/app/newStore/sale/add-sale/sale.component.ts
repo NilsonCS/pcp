@@ -40,12 +40,12 @@ export class SaleComponent implements OnInit {
 
   createForm() {
     this.formGroup = this.formBuilder.group({
-
-        card: [null, [Validators.required, Validators.pattern("^[0-9]*$") ] ],
+/**   */ 
+        card: [null, [Validators.required] ],
         month: [null, [Validators.required] ],
-        year: [null, [Validators.required] ],
+        year: [null, [Validators.required] ], 
         securityCode: [null, [Validators.required,Validators.pattern("^[0-9]*$")  ,Validators.minLength(3), Validators.maxLength(3)] ],
-      
+           
         // email:[null, [Validators.required, Validators.email] ],
         name: [null, [Validators.required, this.validarEspacios, Validators.minLength(4), Validators.maxLength(30) ] ],
         phone:[null, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(8), Validators.maxLength(8)] ],
@@ -145,6 +145,7 @@ export class SaleComponent implements OnInit {
        "month":post.month,
        "year":post.year,
        "securityCode":post.securityCode,
+       
        "name":post.name,
        "direction":post.direction,
        "phone":post.phone,

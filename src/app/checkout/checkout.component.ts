@@ -162,7 +162,7 @@ onSubmit(post: any) {
                                   this.router.navigate(["listarStore"]);
                             
                               });
-                              this.formGroup.reset();
+                              //this.formGroup.reset();
 
 
 }
