@@ -13,4 +13,6 @@ export class CheckoutService {
   post(checkout: any): Observable<any>{
     return this.http.post<any>(this.url, checkout);
   }
+
+
 }

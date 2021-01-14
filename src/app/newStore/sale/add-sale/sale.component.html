@@ -60,7 +60,7 @@
 
               <div class="form-group">
                 <label for="name">Codigo de seguridad CCV:</label>
-                <input matInput class="form-control"   placeholder="CCV" formControlName="securityCode">
+                <input matInput class="form-control" (keyup)="validateCcv($event)"   placeholder="CCV" formControlName="securityCode">
               </div>
 
               <!--Datos de la Persona-->
