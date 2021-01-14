@@ -4,12 +4,7 @@ import { Product } from '../../product/product';
 @Injectable({
   providedIn: 'root'
 })
-/**
-class CantidadProducto{
-  producto:any;
-  cantidad:any;
-}
- */
+
 export class CarritoServiceService {
 
   products:Product[]=[];
