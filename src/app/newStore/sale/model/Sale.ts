@@ -1,5 +1,5 @@
 export class Sale{
-    saleId: Number;
+    saleId: number;
     companyId: Number;
     card: String;
     month: String;

@@ -37,6 +37,7 @@ import { ListStoreComponent } from './newStore/list-store/list-store.component';
 import { CarritoComponent } from './newStore/carrito/carrito.component';
 import { SaleComponent } from './newStore/sale/add-sale/sale.component';
 import { ListCheckoutComponent } from './checkout/list-checkout/list-checkout.component';
+import { ListSaleComponent } from './newStore/sale/list-sale/list-sale.component';
 
 
 
@@ -67,6 +68,7 @@ const routes: Routes = [
   {path: 'carrito', component: CarritoComponent},
   //nueva venta
   {path: 'sale', component: SaleComponent},
+  {path: 'list-sale', component: ListSaleComponent},
   //lista checkout
   {path: 'listCheckout', component: ListCheckoutComponent}
 
@@ -103,6 +105,7 @@ const routes: Routes = [
     CarritoComponent,
     SaleComponent,
     ListCheckoutComponent,
+    ListSaleComponent,
 
   ],
   imports: [
