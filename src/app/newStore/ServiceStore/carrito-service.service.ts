@@ -57,20 +57,20 @@ export class CarritoServiceService {
 
   //Eliminar producto
   deleteProduct(product: Product){
-    let temp:Product[]=[];
-    for (let x of this.products){
-      if (x.productId != product.productId){
+    let temp:any[]=[];
+    for (let x of this.productsCantidad){
+      if (x.producto.productId != product.productId){
         temp.push(x);
       }
     }
-    this.products = temp;
+    this.productsCantidad = temp;
   }
 
   //obtener el precio total de los productos
   getTotal():number{
     this.total = 0;
-    for (let product of this.products){
-      this.total+=product.unitPrice;
+    for (let product of this.productsCantidad){
+      this.total+=product.producto.unitPrice * product.cantidad;
       console.log(product.unitPrice);
     }
     return this.total;

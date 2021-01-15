@@ -13,6 +13,8 @@
                     <tr  class="text-left">
                         <th>Id</th>
                         <th>contacto</th>
+                        <th>Email</th>
+                        <th>fecha de reserva</th>
 
                     </tr>
                 </thead>
@@ -20,7 +22,8 @@
                     <tr   class="text-left" *ngFor="let checkout of checkouts">
                         <td>{{checkout.checkoutId}}  </td>
                         <td>{{checkout.contact}}</td>
-
+                        <td>{{checkout.address}}</td>
+                        <td>{{checkout.date}}</td>
 
                         <td>
                             <!--IMAGEN LLama a info de Company
@@ -30,7 +33,7 @@
                             </div>-->
                         </td>
                         <td>
-                            <button  class="btn btn-success"> Editar</button>
+                        <!-- <button  class="btn btn-success"> Editar</button>-->
                             <button type="button" (click)="eliminar(checkout)" class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>
                         </td>
                     </tr>

@@ -53,6 +53,7 @@ export class CarritoComponent implements OnInit {
   delete(product: Product){
     this.carritoService.deleteProduct(product);
     this.getProducts();
+    console.log("borrar...");
   }
 
   //total de precios de productos

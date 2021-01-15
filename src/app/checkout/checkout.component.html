@@ -29,6 +29,27 @@
 
   </form>
 
+  <!-- TABLITA DATOS DE PRODUCTO-->
+  <div >
+    <table class="table table-hover">
+        <thead>
+            <tr  class="text-left">
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-left" *ngFor="let producto of productosCantidad">
+                <td>{{producto.producto.productName}}</td>
+                <td>{{producto.producto.unitPrice}} </td>
+                <td>{{producto.cantidad}} </td>
+            </tr>
+        </tbody>
+    </table> 
+</div>  
+
+
   <mat-toolbar color="primary">
     <span class="fill-remaining-space"><h1 align="left"> Total: {{total | currency}}</h1></span>
 

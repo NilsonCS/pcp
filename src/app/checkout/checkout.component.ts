@@ -20,6 +20,7 @@ titleAlert: string = "This field is required";
 post: any = "";
 total: number = 0;
 date: any;
+productosCantidad: any;
 //validaciones
 titleAlertName: string = "";
 titleAlertEmail: string = "";
@@ -36,6 +37,10 @@ ngOnInit() {
 
   this.validateName();
   this.validateEmail();
+
+  //get productos
+  this.getProductos();
+
 }
 /**
 getTotal(){
@@ -50,6 +55,12 @@ getTotal(){
 //fecha
 getDate(){
   this.date = new Date();
+}
+
+getProductos(){
+  this.productosCantidad = this.carritoService.productsCantidad;
+  console.log("PRODUCTOS");
+  console.log(this.productosCantidad);
 }
 
 createForm() {
@@ -148,7 +159,8 @@ onSubmit(post: any) {
                              "contact":post.name,
                              "address":post.email,
                              "date":this.date,
-                             "total":this.total })
+                             "total":this.total,
+                             "productosCantidad":this.productosCantidad })
                              .subscribe(data => {
                                 this.post = "Guardado con exito!!!";
                                   //mensaje despues de guardar el checkout
