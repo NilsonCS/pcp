@@ -11,6 +11,7 @@ import swal from "sweetalert2";
 })
 export class ListCheckoutComponent implements OnInit {
 
+  productoReservas: any;
   checkouts: any;
   checkout:Checkout[];// para metodo eliminar
   constructor(private serviceCheckout:ServiceCheckoutService) {
@@ -23,6 +24,11 @@ export class ListCheckoutComponent implements OnInit {
       this.checkouts=data;
     })  
 
+    // Lista ProductoReserva
+    this.serviceCheckout.getPr()
+    .subscribe(data =>{
+      this.productoReservas=data;
+    })  
   }
 
 

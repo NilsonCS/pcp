@@ -14,8 +14,6 @@
                         <th>Id</th>
                         <th>contacto</th>
                         <th>Email</th>
-                        <th>fecha de reserva</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -23,7 +21,6 @@
                         <td>{{checkout.checkoutId}}  </td>
                         <td>{{checkout.contact}}</td>
                         <td>{{checkout.address}}</td>
-                        <td>{{checkout.date}}</td>
 
                         <td>
                             <!--IMAGEN LLama a info de Company
@@ -33,10 +30,55 @@
                             </div>-->
                         </td>
                         <td>
-                        <!-- <button  class="btn btn-success"> Editar</button>-->
                             <button type="button" (click)="eliminar(checkout)" class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>
                         </td>
                     </tr>
+
+                </tbody>
+            </table> 
+
+        </div>    
+
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>datos de producto Reserva</h3>     
+        </div>
+
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr  class="text-left">
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr   class="text-left" *ngFor="let pr of productoReservas">
+                        <td>{{pr.prId}}  </td>
+                        <td>{{pr.contact}}</td>
+                        <td>{{pr.address}}</td>
+                        
+                        <td>{{pr.productName}}</td>
+                        <td>{{pr.unitPrice}}</td>
+                        <td>{{pr.cantidad}}</td>
+
+                        <td>
+                            <button type="button"  class="btn btn-danger" style="margin-left: 10px;"> Eliminar</button>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table> 
 

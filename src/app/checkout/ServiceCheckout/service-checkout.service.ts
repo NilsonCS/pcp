@@ -14,11 +14,18 @@ export class ServiceCheckoutService {
   constructor(private http:HttpClient) { }
 
   Url:string = 'http://localhost:8080/v1/checkout';
+  Url2:string = 'http://localhost:8080/v1/pr';
 
   //metodo para obtener la lista de reservas
   getCheckout(){
     return this.http.get<Checkout[]>(this.Url);
   }
+
+  //metodo para obtener la lista productoReserva
+  getPr(){
+    return this.http.get<Checkout[]>(this.Url2);
+  }
+
   //metodo para eliminar reservas
   deleteCheckout(id:number):Observable<Checkout>{
     return this.http.delete<Checkout>(this.Url +"/"+ id, { headers: this.httpHeaders });

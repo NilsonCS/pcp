@@ -67,13 +67,28 @@ createForm() {
   this.formGroup = this.formBuilder.group({
     name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(50) ]],
     email: [null, [Validators.required, Validators.email] ],
-   //date: [null, Validators.required],
-
-    //email: [null, [Validators.required, Validators.email],this.checkInUseEmail],
-    //password: [null, [Validators.required, this.checkPassword]],
     validate: ""
   });
 }
+
+//nuevo createForm
+/** 
+createForm() {
+  this.formGroup = this.formBuilder.group({
+    name: [null, [Validators.required, this.validarEspacios,Validators.minLength(3), Validators.maxLength(50) ]],
+    email: [null, [Validators.required, Validators.email] ],
+
+    productId:[null], // igual deberia de pasar con id
+    checkoutId:[null], // igual deberia de pasar con id
+    //cantidad:[null],  pasar catidad con this
+    //productName:[null], pasar con this
+    //unitPrice:[null], pasar con this
+
+    validate: ""
+  });
+}
+*/
+
 
 setChangeValidate() {
   this.formGroup.get("validate").valueChanges.subscribe((validate: any) => {
@@ -178,8 +193,57 @@ onSubmit(post: any) {
 
 
 }
+ 
 
-close(){
-  this.dialog.closeAll();
+ //nuevo post 
+ /**
+onSubmit(post: any) {
+  this.checkoutService.post({"productId":1 ,
+                             "checkoutId": 1,
+                             "cantidad": 10,
+
+                             "productName": "Procesador",
+                             "model": "I5 9400",
+                             "productDescription": "Intel I5 novena generacion",
+                             "stock": 10,
+                             "weight": 10,
+                             "unitPrice": 1000,
+                             "currency": 1,
+                             "img": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6306/6306415_sd.jpg",
+                             "companyId": 2,
+                             "productTypeId": 1,
+                             "cityId": 1,
+                             "brandId": 1,
+
+                             "contact":post.name,
+                             "address":post.email,
+                             "cartId": 2,
+                             "paymentDetailsId": 2,
+
+                             "date":this.date,
+                             "total":this.total,
+                             "productosCantidad":this.productosCantidad })
+                             .subscribe(data => {
+                                this.post = "Guardado con exito!!!";
+                                  //mensaje despues de guardar el checkout
+                                  swal.fire(
+                                    'Agregado!',
+                                    `Reserva exitosa, desde hoy tiene 10 días para finalizar la compra.`,
+                                    'success'
+                                  );
+
+                                  this.close();
+                                  this.router.navigate(["listarStore"]);
+                            
+                              });
+                              //this.formGroup.reset();
+
+
 }
+ */
+
+
+  close(){
+    this.dialog.closeAll();
+  }
 }

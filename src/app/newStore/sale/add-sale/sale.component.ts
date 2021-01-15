@@ -30,6 +30,8 @@ export class SaleComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.getTotal();
+
     //validaciones
     this.validateName();
     this.validatePhone();
@@ -158,7 +160,7 @@ export class SaleComponent implements OnInit {
               'success'
             );
             //alert("La Empresa se guardo exitosamente");
-            //this.router.navigate(["listar"]);
+            this.router.navigate(["list-sale"]);
         });
     
   }
