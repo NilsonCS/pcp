@@ -1,14 +1,8 @@
 <p>sale works!</p>
 
-<li></li>
-<div class="container">
-  <button   class="btn btn-info"> Volver </button>
-</div>
-
-
 <div class="container" id="registration-form">  
     <div class="image"></div>
-      <div class="frm">
+      <div class="frm" >
         <mat-toolbar color="primary">
           <span class="fill-remaining-space"><h1>Compra</h1></span>
         </mat-toolbar>
@@ -17,17 +11,16 @@
               <!--Datos de la tarjeta-->
               <div class="form-group">
                   <label for="name">Número tarjeta:</label>
-                  <input matInput class="form-control" (keyup)="validateCard($event)"  placeholder="Número de la tarjeta" formControlName="card">
+                  <input matInput class="form-control" (keypress)="keyPress($event)" required  (keyup)="validateCard($event)"   placeholder="Número de la tarjeta" formControlName="card">
+                  <mat-error *ngIf="!formGroup.controls['card'].valid && formGroup.controls['card'].touched">
+                    {{ titleAlertCard }}
+                  </mat-error> 
               </div>
 
-              <div class="form-group">
-                <label for="name">Fecha de expiracón:</label>
+              <div class="form-group" id="month" style=" width:200px; height: 50px; display: inline-block; margin-top: 50px;">
+                <label for="name">Fecha de expiracón:</label><br>
                 <label for="name">Mes:</label>
-                <!--
-                <input matInput class="form-control"   (keyup)="validateDate($event)" placeholder="Fecha de expiración" formControlName="expirationDate">
-                  -->
                     <select matInput class="form-control" formControlName="month" >
-                      <option disabled selected>Mes</option>
                       <option >Enero</option>
                       <option >Febrero </option>
                       <option >Marzo</option>
@@ -43,10 +36,9 @@
                     </select>
               </div>
 
-              <div class="form-group" >
+              <div class="form-group" id="year" style=" width:200px; height: 50px; display:inline-block; margin-top: 50px; ">
                 <label for="name">Año:</label>
                     <select matInput class="form-control" formControlName="year" >
-                      <option disabled selected> Año</option>
                       <option > 2021</option>
                       <option > 2022</option>
                       <option > 2023</option>
@@ -58,11 +50,17 @@
                     </select> 
               </div>
 
-              <div class="form-group">
-                <label for="name">Codigo de seguridad CCV:</label>
-                <input matInput class="form-control"   placeholder="CCV" formControlName="securityCode">
-              </div>
+              <div class="form-group" style=" width:200px; height: 50px; display:inline-block; margin-top: 50px; ">
+                <label for="name">Codigo de seguridad:</label><br>
+                <label for="name">CCV:</label>
+                <input matInput class="form-control" (keypress)="keyPress($event)" required   placeholder="CCV" formControlName="securityCode">
 
+                <mat-error *ngIf="!formGroup.controls['securityCode'].valid && formGroup.controls['securityCode'].touched">
+                  {{ titleAlertCcv }}
+                </mat-error> 
+              </div>
+              <br><br>
+              
               <!--Datos de la Persona-->
               <div class="form-group">
                   <label for="name">Nombre:</label>
@@ -85,7 +83,7 @@
 
               <div class="form-group">
                   <label for="direction">Dirección:</label>
-                  <textarea matInput class="form-control" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]" placeholder="Dirección" formControlName="direction"></textarea>
+                  <textarea matInput class="form-control" placeholder="Dirección" formControlName="direction"></textarea>
                  
                   <mat-error *ngIf="!formGroup.controls['direction'].valid && formGroup.controls['direction'].touched">
                     {{ titleAlertDirection }}
@@ -93,20 +91,14 @@
               </div>
 
               <div class="form-group">
-                <label for="name">total:</label>
-                <input matInput class="form-control"   placeholder="total" formControlName="total">
-                
- 
-            </div>
-           
-
-              <div class="form-group">
-                  <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+                  <button type="submit" class="btn btn-success btn-lg" [disabled]="!formGroup.valid">Guardar</button>
               </div>
-              
-
+            
           </form>
 
+          <mat-toolbar color="primary">
+            <span class="fill-remaining-space"><h1 align="left"> Total: {{total | currency}}</h1></span>
+          </mat-toolbar>
 
       </div>
   </div>

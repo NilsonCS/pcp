@@ -1,9 +1,10 @@
 <mat-toolbar color="primary">
-  <span class="fill-remaining-space">Checkout</span>
+  <span class="fill-remaining-space">Reserva</span>
   <mat-icon class="icon" (click)="close()">close</mat-icon>
 </mat-toolbar>
 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+   
     <mat-form-field class="form-element">
         <input matInput placeholder="Nombre"  pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]" formControlName="name">
         
@@ -11,7 +12,6 @@
           {{ titleAlertName }}
         </mat-error> 
     </mat-form-field>
-
     
     <mat-form-field class="form-element">
       <input matInput placeholder="Correo de electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" formControlName="email">
@@ -21,17 +21,35 @@
       </mat-error>
     </mat-form-field>
     
-<!--
-    <mat-form-field class="form-element">
-      <input matInput placeholder="Fecha" formControlName="date">
-    </mat-form-field>
--->
+
     <div class="form-element">
       <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid" >Reserva
       </button>
     </div>
 
   </form>
+
+  <!-- TABLITA DATOS DE PRODUCTO-->
+  <div >
+    <table class="table table-hover">
+        <thead>
+            <tr  class="text-left">
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-left" *ngFor="let producto of productosCantidad">
+                <td>{{producto.producto.productName}}</td>
+                <td>{{producto.producto.unitPrice}} </td>
+                <td>{{producto.cantidad}} </td>
+                
+            </tr>
+        </tbody>
+    </table> 
+  </div>  
+
 
   <mat-toolbar color="primary">
     <span class="fill-remaining-space"><h1 align="left"> Total: {{total | currency}}</h1></span>
@@ -40,6 +58,7 @@
       {{date | date:'yyyy-MM-dd'}}
     </div>
   </mat-toolbar>
+  
 <!--
 <div class="container" *ngIf="!post; else forminfo"> 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">

@@ -16,8 +16,10 @@ import { Router } from '@angular/router';
 export class CarritoComponent implements OnInit {
 
   products: Product[] = [];
+  productsCantidad:any[] = [];
+
   total: number = 0;
-  displayedColumns: string[] = ['name', 'weight', 'symbol', 'product', 'details', 'position'];
+  displayedColumns: string[] = ['name', 'weight', 'symbol', 'product','cantidad', 'details', 'position'];
 
   constructor(public carritoService:CarritoServiceService , private sanitizer: DomSanitizer, public productService:ProductService, private dialog:MatDialog,private router:Router) { }
 
@@ -27,9 +29,12 @@ export class CarritoComponent implements OnInit {
   }
 
   //obteniendo productos para el carrito
+  //cantidad
   getProducts (){
-    this.products = this.carritoService.getProducts();
+    //this.products = this.carritoService.getProducts();
+    this.productsCantidad = this.carritoService.getProductsCantidad();
   }
+
 
   //obtener la img URl
   public getSantizeUrl(url : string) {
@@ -48,6 +53,7 @@ export class CarritoComponent implements OnInit {
   delete(product: Product){
     this.carritoService.deleteProduct(product);
     this.getProducts();
+    console.log("borrar...");
   }
 
   //total de precios de productos

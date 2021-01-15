@@ -7,17 +7,14 @@
   </div>
 
 
-  <!--prueba fondo de img -->
-  <div class="container" id="fondo">
-    <img [src]="myimage" class="img-fluid" style="position: absolute; right: 0; top: 0; z-index: -100;">
-  </div>
-
-  <div class="container" id="registration-form">
-    <div class="image"></div>
-    <div class="frm">
-      <h1>Registro</h1>
-      <form  [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
-
+    <div class="container" id="registration-form">
+      <div class="image"></div>
+        <div class="frm">
+            <h1>Registro</h1>
+            <form  [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+              <div *ngIf="formGroup.hasError('whitespace')">Please enter valid data</div>
+              
+                
         <div class="form-group">
           <label for="name">Nombre:</label>
           <input matInput class="form-control"   placeholder="Nombre de la Empresa" formControlName="name">

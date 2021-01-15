@@ -1,5 +1,5 @@
 export interface Checkout {
-    "checkoutId": string,
+    "checkoutId": number,
     "cartId": number,
     "paymentDetailsId": number,
     "date": Date,

@@ -7,8 +7,8 @@
 
 
 #registration-form{
-	max-width: 800px;
-	margin: 120px auto;
+	max-width: 700px;
+	margin: 30px auto;
 }
 
 /** img junto al registro	 
@@ -22,9 +22,9 @@
 }
 */
 #registration-form .frm{
-	float:right;
+	float:center;
 	height: 500px;
-    width: 50%;
+    width: 110%;
     min-width: 250px;
     padding: 0 35px;
     background-size: 100% 100%;
